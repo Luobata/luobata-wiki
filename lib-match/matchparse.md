@@ -15,9 +15,10 @@ match.parse(params, matchObj);
 match.parseConfig(params, matchObj, tmpConfig);
 ```
 
-### etc:
+## etc:
 
 1. 映射普通字段
+
    ```
    const match = import 'lib-match';
 
@@ -31,7 +32,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        msg: 'this is string'
    });
    ```
+
 2. 映射对象属性
+
    ```
    let params = {
        title: 'title',
@@ -50,7 +53,9 @@ match.parseConfig(params, matchObj, tmpConfig);
    }
    });
    ```
+
 3. 映射字段带有默认值
+
    ```
    let params = {
        title: 'title',
@@ -65,7 +70,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        value: '$${{value}} || {}', // 默认值为对象类型 数组类型暂时只能空对象
    });
    ```
+
 4. 映射入口为数组
+
    ```
    let params = [
        {
@@ -88,7 +95,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        }
    });
    ```
+
 5. 映射返回数组/对象数组
+
    ```
    let params = {
        code: 200,
@@ -150,7 +159,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        type: "$${{type}} || 'abc'"
    }]);
    ```
+
 6. **映射function**
+
    ```
    let params = {
        pid: 2,
@@ -166,7 +177,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        }
    });
    ```
+
 7. **映射带有临时config**
+
    ```
    params = {
        pid: 1,
@@ -212,7 +225,9 @@ match.parseConfig(params, matchObj, tmpConfig);
        id: 2
    });
    ```
+
 8. **映射带有类型转换**
+
    ```
    // boolean 布尔值 'true' 转化为true 'false'转化为false
    // Boolean 布尔值 对转化后的值强制类型转换 !!(变量)
