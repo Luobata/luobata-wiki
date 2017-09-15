@@ -1,0 +1,532 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>映射语法 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="match-function.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="match-parse.html">
+            
+                <a href="match-parse.html">
+            
+                    
+                    映射语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="match-function.html">
+            
+                <a href="match-function.html">
+            
+                    
+                    注册函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="match-config.html">
+            
+                <a href="match-config.html">
+            
+                    
+                    参数配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >映射语法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <pre><code>/**
+ * @description match&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x8F6C;&#x6362;&#x51FD;&#x6570;
+ * @params * params {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
+ * @params * matchObj {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x89C4;&#x5219;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
+ */
+match.parse(params, matchObj);
+
+/**
+ * @description match&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x8F6C;&#x6362;&#x51FD;&#x6570;
+ * @params * params {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
+ * @params * matchObj {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x89C4;&#x5219;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
+ * @params * tmpConfig {object} &#x4E34;&#x65F6;&#x7684;config&#x914D;&#x7F6E; &#x53EA;&#x5BF9;&#x672C;&#x6B21;&#x8F6C;&#x5316;&#x6709;&#x6548;
+ */
+match.parseConfig(params, matchObj, tmpConfig);
+</code></pre><h2 id="etc">etc:</h2>
+<ol>
+<li><p>&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</p>
+<pre><code>const match = import &apos;lib-match&apos;;
+
+let params = {
+    title: &apos;title&apos;
+};
+
+// &#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;
+let data = match.parse(params, {
+    title: &apos;$$&apos;,
+    msg: &apos;this is string&apos;
+});
+</code></pre></li>
+<li><p>&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</p>
+<pre><code>let params = {
+    title: &apos;title&apos;,
+    data: {
+        city: &apos;&#x5317;&#x4EAC;&#x5E02;&apos;,
+        province: &apos;&#x5317;&#x4EAC;&apos;
+    }
+};
+
+// &#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;
+let data = match.parse(params, {
+    title: &apos;$$&apos;,
+    data: {
+        city: &apos;$$&apos;,
+    pro: &apos;$$&apos;
+}
+});
+</code></pre></li>
+<li><p>&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</p>
+<pre><code>let params = {
+    title: &apos;title&apos;,
+    id: 1
+};
+
+// &#x6620;&#x5C04;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;
+let data = match.parse(params, {
+    title: &apos;$$ || 123&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;number&#x7C7B;&#x578B; 123
+    id: &apos;$$ || &quot;123&quot;&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;string&#x7C7B;&#x578B; 123
+    name: &apos;$$ || []&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x6570;&#x7EC4;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x6570;&#x7EC4;
+    value: &apos;$$ || {}&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x5BF9;&#x8C61;
+});
+</code></pre></li>
+<li><p>&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</p>
+<pre><code>let params = [
+    {
+        code: 200,
+        msg: &apos;ok&apos;,
+        data: [1, 2, 3]
+    },
+    {
+        code: 500,
+        msg: &apos;error&apos;,
+        data: [4, 5, 6]
+    }
+];
+
+let data = match.parse(params, {
+    code: &apos;${0.code}&apos;,
+    msg: &apos;${1.msg}&apos;,
+    data: function (data) {
+        return data[0].data.concat(data[1].data); // [1, 2, 3, 4, 5, 6]
+    }
+});
+</code></pre></li>
+<li><p>&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;/&#x5BF9;&#x8C61;&#x6570;&#x7EC4;</p>
+<pre><code>let params = {
+    code: 200,
+    msg: &apos;success&apos;,
+    data: [
+        {
+            id: 1,
+            type: &apos;a&apos;
+        },
+        {
+            id: 2
+        }
+    ]
+};
+
+// &#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;
+let data = match.parse(params, {
+    code: &apos;$$&apos;,
+    msg: &apos;$$&apos;,
+    data: [&apos;data&apos;, {
+        id: &apos;$$&apos;,
+        title: &apos;string&apos;,
+        type: &quot;$$ || &apos;abc&apos;&quot;
+    }]
+});
+
+params = [
+    {
+        id: 1,
+        type: &apos;a&apos;
+    },
+    {
+        id: 2
+    }
+];
+
+// &#x76F4;&#x63A5;&#x6620;&#x5C04;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;
+data = match.parse(params, [{
+    id: &apos;$$&apos;,
+    title: &apos;string&apos;,
+    type: &quot;$$ || &apos;abc&apos;&quot;
+}]);
+
+params = {
+    data: [
+        {
+            id: 1,
+            type: &apos;a&apos;
+        },
+        {
+            id: 2
+        }
+    ]
+};
+// &#x6620;&#x5C04; params.data &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;
+data = match.parse(params, [&apos;data&apos;, {
+    id: &apos;$$&apos;,
+    title: &apos;string&apos;,
+    type: &quot;$$ || &apos;abc&apos;&quot;
+}]);
+</code></pre></li>
+<li><p><strong>&#x6620;&#x5C04;function</strong></p>
+<pre><code>let params = {
+    pid: 2,
+    id: 3
+};
+
+// &#x6620;&#x5C04; function
+let data = match.parse(params, {
+    pid: 1,
+    id: function (data) {
+        // this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params
+        return data.pid + data.id + this.pid; // 6
+    }
+});
+</code></pre></li>
+<li><p><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config</strong></p>
+<pre><code>params = {
+    pid: 1,
+    id: 2,
+    cityId: 2
+};
+data = match.parseConfig(params, {
+    id: &apos;$$&apos;,
+    pid: &apos;$$&apos;
+}, {
+    autoComplete: true,
+    filterUndefined: false
+});
+expect(data).to.be.eql({
+    id: undefined,
+    pid: 1,
+    cityId: 2
+});
+
+data = match.parse(params, {
+    id: &apos;$$&apos;
+});
+expect(data).to.be.eql({
+    id: 2
+});
+
+data = match.parseConfig(params, {
+    id: &apos;$$&apos;,
+    pid: &apos;$$&apos;
+}, {
+    ignoreTokenKey: [&apos;id&apos;]
+});
+
+expect(data).to.be.eql({
+    id: &apos;$$&apos;,
+    pid: 1
+});
+
+data = match.parse(params, {
+    id: &apos;$$&apos;
+});
+expect(data).to.be.eql({
+    id: 2
+});
+</code></pre></li>
+<li><p><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></p>
+<pre><code>// boolean &#x5E03;&#x5C14;&#x503C; &apos;true&apos; &#x8F6C;&#x5316;&#x4E3A;true &apos;false&apos;&#x8F6C;&#x5316;&#x4E3A;false
+// Boolean &#x5E03;&#x5C14;&#x503C; &#x5BF9;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x503C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362; !!(&#x53D8;&#x91CF;)
+// int &#x6570;&#x503C;&#x503C; parseInt(x, 10);
+// float &#x4E66;&#x7EB8;&#x503C; parseFloat(x, 10);
+// string &#x5B57;&#x7B26;&#x4E32;&#x503C; x.toString();
+let params = {
+    pid: &apos;false&apos;,
+    name: 1,
+    id: &apos;2&apos;,
+    city: 1,
+    district: &apos;1.56&apos;
+};
+let data = match.parse(params, {
+    pid: &apos;(boolean)$$&apos;, // false
+    Pid: &apos;(Boolean)$$&apos;, // true
+    name: &apos;(Boolean)$$&apos;, //true
+    id: &apos;(int)$$&apos;, // 2
+    city: &apos;(string)$$&apos;, // &apos;1&apos;
+    dis: &apos;(float)$$&apos; // 1.56
+});
+
+data = match.parse([params], {
+    pid: &apos;(boolean)${0.pid}&apos;, // false
+    Pid: &apos;(Boolean)${0.pid}&apos;, //true
+    name: &apos;(Boolean)${0.name}&apos;, //true
+    id: &apos;(int)${0.id}&apos;, // 2
+    city: &apos;(string)${0.city}&apos;, // &apos;1&apos;
+    dis: &apos;(float)${0.district}&apos; //1.56
+});
+
+params = [
+    {
+        id: 1,
+        type: 2
+    },
+    {
+        id: 2
+    }
+];
+data = match.parse(params, [{
+    id: &apos;(string)$$&apos;,
+    title: &apos;string&apos;,
+    type: &quot;$$ || &apos;abc&apos;&quot;
+}]);
+</code></pre></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="match-function.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 注册函数">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-parse.md","mtime":"2017-09-15T03:03:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-15T07:26:13.470Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
