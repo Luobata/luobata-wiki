@@ -19,7 +19,7 @@ match.parseConfig(params, matchObj, tmpConfig);
 
 1. 映射普通字段
 
-   ```
+   ```javascript
    const match = import 'lib-match';
 
    let params = {
