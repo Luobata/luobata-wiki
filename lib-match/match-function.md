@@ -1,4 +1,4 @@
-```
+```javascript
 /**
  * @description 注册全局函数
  * @params * fn {Function|Array<Function>} 注册的全局内容，可以是函数或者函数数组
@@ -23,7 +23,8 @@ match.remove(name);
 ## etc:
 
 1. register 函数
-   ```
+
+```javascript
    // 映射枚举值
    let params = {
        type: 1
@@ -73,9 +74,10 @@ match.remove(name);
            return data.pid + data.id + this.pid + format.b();
        }
    });
-   ```
+```
 2. update 函数
-   ```
+
+```javascript
    // 测试update
    let format = {
        a: function () {
@@ -94,9 +96,10 @@ match.remove(name);
            return data.pid + data.id + this.pid + format.b();
        }
    });
-   ```
+```
 3. remove 函数
-   ```
+
+```javascript
    // 移除format 抛出异常
    match.remove('format');
    var data = match.parse(params, {
@@ -106,7 +109,4 @@ match.remove(name);
            return data.pid + data.id + this.pid + format.b();
        }
    });
-   ```
-
-
-
+```

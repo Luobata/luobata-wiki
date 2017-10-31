@@ -19,23 +19,21 @@ match.parseConfig(params, matchObj, tmpConfig);
 
 1. 映射普通字段
 
-   ```javascript
+```javascript
    const match = import 'lib-match';
 
    let params = {
        title: 'title'
    };
-
-   // 映射普通字段
    let data = match.parse(params, {
        title: '$${{title}}',
        msg: 'this is string'
    });
-   ```
+```
 
 2. 映射对象属性
 
-   ```
+```javascript
    let params = {
        title: 'title',
        data: {
@@ -52,11 +50,11 @@ match.parseConfig(params, matchObj, tmpConfig);
        pro: '$${{data.province}}'
    }
    });
-   ```
+```
 
 3. 映射字段带有默认值
 
-   ```
+```javascript
    let params = {
        title: 'title',
        id: 1
@@ -69,11 +67,11 @@ match.parseConfig(params, matchObj, tmpConfig);
        name: '$${{name}} || []', // 默认值为数组类型 数组类型暂时只能空数组
        value: '$${{value}} || {}', // 默认值为对象类型 数组类型暂时只能空对象
    });
-   ```
+```
 
 4. 映射入口为数组
 
-   ```
+```javascript
    let params = [
        {
            code: 200,
@@ -94,11 +92,11 @@ match.parseConfig(params, matchObj, tmpConfig);
            return data[0].data.concat(data[1].data); // [1, 2, 3, 4, 5, 6]
        }
    });
-   ```
+```
 
 5. 映射返回数组/对象数组
 
-   ```
+```javascript
    let params = {
        code: 200,
        msg: 'success',
@@ -158,11 +156,11 @@ match.parseConfig(params, matchObj, tmpConfig);
        title: 'string',
        type: "$${{type}} || 'abc'"
    }]);
-   ```
+```
 
 6. **映射function**
 
-   ```
+```javascript
    let params = {
        pid: 2,
        id: 3
@@ -176,11 +174,11 @@ match.parseConfig(params, matchObj, tmpConfig);
            return data.pid + data.id + this.pid; // 6
        }
    });
-   ```
+```
 
 7. **映射带有临时config**
 
-   ```
+```javascript
    params = {
        pid: 1,
        id: 2,
@@ -224,11 +222,11 @@ match.parseConfig(params, matchObj, tmpConfig);
    expect(data).to.be.eql({
        id: 2
    });
-   ```
+```
 
 8. **映射带有类型转换**
 
-   ```
+```javascript
    // boolean 布尔值 'true' 转化为true 'false'转化为false
    // Boolean 布尔值 对转化后的值强制类型转换 !!(变量)
    // int 数值值 parseInt(x, 10);
@@ -273,7 +271,4 @@ match.parseConfig(params, matchObj, tmpConfig);
        title: 'string',
        type: "$${{type}} || 'abc'"
    }]);
-   ```
-
-
-
+```
