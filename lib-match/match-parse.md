@@ -1,4 +1,4 @@
-```
+```javascript
 /**
  * @description match字段映射转换函数
  * @params * params {object|Array} 用于转化的数据对象或数组
@@ -17,7 +17,7 @@ match.parseConfig(params, matchObj, tmpConfig);
 
 ## etc:
 
-1. 映射普通字段
+###### 映射普通字段
 
 ```javascript
    const match = import 'lib-match';
@@ -31,7 +31,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-2. 映射对象属性
+###### 映射对象属性
 
 ```javascript
    let params = {
@@ -52,7 +52,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-3. 映射字段带有默认值
+###### 映射字段带有默认值
 
 ```javascript
    let params = {
@@ -69,7 +69,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-4. 映射入口为数组
+###### 映射入口为数组
 
 ```javascript
    let params = [
@@ -94,7 +94,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-5. 映射返回数组/对象数组
+###### 映射返回数组/对象数组
 
 ```javascript
    let params = {
@@ -158,7 +158,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    }]);
 ```
 
-6. **映射function**
+###### **映射function**
 
 ```javascript
    let params = {
@@ -176,7 +176,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-7. **映射带有临时config**
+###### **映射带有临时config**
 
 ```javascript
    params = {
@@ -224,7 +224,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    });
 ```
 
-8. **映射带有类型转换**
+###### **映射带有类型转换**
 
 ```javascript
    // boolean 布尔值 'true' 转化为true 'false'转化为false

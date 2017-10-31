@@ -22,7 +22,7 @@ match.remove(name);
 
 ## etc:
 
-1. register 函数
+###### register 函数
 
 ```javascript
    // 映射枚举值
@@ -75,7 +75,8 @@ match.remove(name);
        }
    });
 ```
-2. update 函数
+
+###### update 函数
 
 ```javascript
    // 测试update
@@ -97,7 +98,7 @@ match.remove(name);
        }
    });
 ```
-3. remove 函数
+###### remove 函数
 
 ```javascript
    // 移除format 抛出异常

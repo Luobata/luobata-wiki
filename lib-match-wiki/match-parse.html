@@ -203,24 +203,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code>/**
+                                <pre><code class="lang-javascript"><span class="hljs-comment">/**
  * @description match&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x8F6C;&#x6362;&#x51FD;&#x6570;
  * @params * params {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
  * @params * matchObj {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x89C4;&#x5219;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
- */
+ */</span>
 match.parse(params, matchObj);
 
-/**
+<span class="hljs-comment">/**
  * @description match&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x8F6C;&#x6362;&#x51FD;&#x6570;
  * @params * params {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
  * @params * matchObj {object|Array} &#x7528;&#x4E8E;&#x8F6C;&#x5316;&#x7684;&#x89C4;&#x5219;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;
  * @params * tmpConfig {object} &#x4E34;&#x65F6;&#x7684;config&#x914D;&#x7F6E; &#x53EA;&#x5BF9;&#x672C;&#x6B21;&#x8F6C;&#x5316;&#x6709;&#x6548;
- */
+ */</span>
 match.parseConfig(params, matchObj, tmpConfig);
-</code></pre><h2 id="etc">etc:</h2>
-<ol>
-<li>&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</li>
-</ol>
+</code></pre>
+<h2 id="etc">etc:</h2>
+<h6 id="&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;">&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">const</span> match = <span class="hljs-keyword">import</span> <span class="hljs-string">&apos;lib-match&apos;</span>;
 
    <span class="hljs-keyword">let</span> params = {
@@ -231,9 +230,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        msg: <span class="hljs-string">&apos;this is string&apos;</span>
    });
 </code></pre>
-<ol>
-<li>&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;">&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
        title: <span class="hljs-string">&apos;title&apos;</span>,
        data: {
@@ -251,9 +248,7 @@ match.parseConfig(params, matchObj, tmpConfig);
    }
    });
 </code></pre>
-<ol>
-<li>&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;">&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
        title: <span class="hljs-string">&apos;title&apos;</span>,
        id: <span class="hljs-number">1</span>
@@ -267,9 +262,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        value: <span class="hljs-string">&apos;$${{value}} || {}&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x5BF9;&#x8C61;</span>
    });
 </code></pre>
-<ol>
-<li>&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;">&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = [
        {
            code: <span class="hljs-number">200</span>,
@@ -291,9 +284,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        }
    });
 </code></pre>
-<ol>
-<li>&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;/&#x5BF9;&#x8C61;&#x6570;&#x7EC4;</li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x6570;&#x7EC4;">&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;/&#x5BF9;&#x8C61;&#x6570;&#x7EC4;</h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
        code: <span class="hljs-number">200</span>,
        msg: <span class="hljs-string">&apos;success&apos;</span>,
@@ -354,9 +345,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>
    }]);
 </code></pre>
-<ol>
-<li><strong>&#x6620;&#x5C04;function</strong></li>
-</ol>
+<h6 id="&#x6620;&#x5C04;function"><strong>&#x6620;&#x5C04;function</strong></h6>
 <pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
        pid: <span class="hljs-number">2</span>,
        id: <span class="hljs-number">3</span>
@@ -371,9 +360,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        }
    });
 </code></pre>
-<ol>
-<li><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config</strong></li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config"><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config</strong></h6>
 <pre><code class="lang-javascript">   params = {
        pid: <span class="hljs-number">1</span>,
        id: <span class="hljs-number">2</span>,
@@ -418,9 +405,7 @@ match.parseConfig(params, matchObj, tmpConfig);
        id: <span class="hljs-number">2</span>
    });
 </code></pre>
-<ol>
-<li><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></li>
-</ol>
+<h6 id="&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;"><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></h6>
 <pre><code class="lang-javascript">   <span class="hljs-comment">// boolean &#x5E03;&#x5C14;&#x503C; &apos;true&apos; &#x8F6C;&#x5316;&#x4E3A;true &apos;false&apos;&#x8F6C;&#x5316;&#x4E3A;false</span>
    <span class="hljs-comment">// Boolean &#x5E03;&#x5C14;&#x503C; &#x5BF9;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x503C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362; !!(&#x53D8;&#x91CF;)</span>
    <span class="hljs-comment">// int &#x6570;&#x503C;&#x503C; parseInt(x, 10);</span>
@@ -505,7 +490,7 @@ match.parseConfig(params, matchObj, tmpConfig);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-parse.md","mtime":"2017-10-31T03:04:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:09:46.441Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-parse.md","mtime":"2017-10-31T03:37:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:39:40.759Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

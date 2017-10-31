@@ -16,7 +16,7 @@
     ignoreTokenKey: 忽略关键字，命中关键字的key不进行匹配
 ```
 
-1. 修改默认config
+###### 修改默认config
 
 ```javascript
    // 修改默认config
