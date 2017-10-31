@@ -205,33 +205,33 @@
                                 
                                 <h1 id="match-&#x5168;&#x5C40;config">match &#x5168;&#x5C40;config</h1>
 <p><strong>&#x8BF7;&#x8C28;&#x614E;&#x4FEE;&#x6539;&#x5168;&#x5C40;config&#xFF0C;&#x4E00;&#x65E6;&#x4FEE;&#x6539;&#x5168;&#x5C40;&#x751F;&#x6548;&#xFF0C;&#x5EFA;&#x8BAE;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x5168;&#x5C40;config&#x7684;&#x5165;&#x53E3;&#xFF0C;&#x4EE5;&#x514D;&#x591A;&#x4EBA;&#x5F00;&#x53D1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x56E0;&#x4E3A;&#x5168;&#x5C40;config&#x7684;&#x53D8;&#x5316;&#x9020;&#x6210;&#x7684;&#x5F71;&#x54CD;</strong></p>
-<pre><code>// &#x9ED8;&#x8BA4;config
-let config = {
-    filterUndefined: true, // &#x8FC7;&#x6EE4;undefined
-    filterNull: true, // &#x8FC7;&#x6EE4;null
-    autoComplete: false, // &#x81EA;&#x52A8;&#x8865;&#x5168;
-    ignoreTokenKey: [] // &#x5FFD;&#x7565;&#x89E3;&#x6790;&#x7684;key
-};
-```
-filterUndefined: match&#x5B8C;&#x5982;&#x679C;&#x662F;undefined&#x5219;&#x5FFD;&#x7565;&#x8BE5;&#x5B57;&#x6BB5;
-filterNull: match&#x5B8C;&#x5982;&#x679C;&#x662F;null&#x5219;&#x5FFD;&#x7565;&#x8BE5;&#x5B57;&#x6BB5;
-autoComplete: &#x81EA;&#x52A8;&#x8865;&#x5168;&#x539F;&#x5BF9;&#x8C61;&#x4E0E;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x4E0B;&#x5B57;&#x6BB5;&#x540D;&#x76F8;&#x540C;&#x7684;&#x503C;
-ignoreTokenKey: &#x5FFD;&#x7565;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x547D;&#x4E2D;&#x5173;&#x952E;&#x5B57;&#x7684;key&#x4E0D;&#x8FDB;&#x884C;&#x5339;&#x914D;
-</code></pre><ol>
-<li><p>&#x4FEE;&#x6539;&#x9ED8;&#x8BA4;config</p>
-<pre><code>// &#x4FEE;&#x6539;&#x9ED8;&#x8BA4;config
-let params = {
-    pid: 1,
-    id: 2
-};
-
-match.config({autoComplete: true});
-let data = match.parse(params, {
-    id: &apos;$$&apos;
-});
-// {id: 2, pid: 1}
-</code></pre></li>
+<pre><code class="lang-javascript">    <span class="hljs-comment">// &#x9ED8;&#x8BA4;config</span>
+    <span class="hljs-keyword">let</span> config = {
+        filterUndefined: <span class="hljs-literal">true</span>, <span class="hljs-comment">// &#x8FC7;&#x6EE4;undefined</span>
+        filterNull: <span class="hljs-literal">true</span>, <span class="hljs-comment">// &#x8FC7;&#x6EE4;null</span>
+        autoComplete: <span class="hljs-literal">false</span>, <span class="hljs-comment">// &#x81EA;&#x52A8;&#x8865;&#x5168;</span>
+        ignoreTokenKey: [] <span class="hljs-comment">// &#x5FFD;&#x7565;&#x89E3;&#x6790;&#x7684;key</span>
+    };
+    filterUndefined: match&#x5B8C;&#x5982;&#x679C;&#x662F;<span class="hljs-literal">undefined</span>&#x5219;&#x5FFD;&#x7565;&#x8BE5;&#x5B57;&#x6BB5;
+    filterNull: match&#x5B8C;&#x5982;&#x679C;&#x662F;<span class="hljs-literal">null</span>&#x5219;&#x5FFD;&#x7565;&#x8BE5;&#x5B57;&#x6BB5;
+    autoComplete: &#x81EA;&#x52A8;&#x8865;&#x5168;&#x539F;&#x5BF9;&#x8C61;&#x4E0E;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x4E0B;&#x5B57;&#x6BB5;&#x540D;&#x76F8;&#x540C;&#x7684;&#x503C;
+    ignoreTokenKey: &#x5FFD;&#x7565;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x547D;&#x4E2D;&#x5173;&#x952E;&#x5B57;&#x7684;key&#x4E0D;&#x8FDB;&#x884C;&#x5339;&#x914D;
+</code></pre>
+<ol>
+<li>&#x4FEE;&#x6539;&#x9ED8;&#x8BA4;config</li>
 </ol>
+<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x4FEE;&#x6539;&#x9ED8;&#x8BA4;config</span>
+   <span class="hljs-keyword">let</span> params = {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-number">2</span>
+   };
+
+   match.config({autoComplete: <span class="hljs-literal">true</span>});
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>
+   });
+   <span class="hljs-comment">// {id: 2, pid: 1}</span>
+</code></pre>
 
                                 
                                 </section>
@@ -271,7 +271,7 @@ let data = match.parse(params, {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"参数配置","level":"1.2.3","depth":2,"previous":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-config.md","mtime":"2017-09-15T02:50:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-15T07:26:13.470Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"参数配置","level":"1.2.3","depth":2,"previous":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-config.md","mtime":"2017-10-31T03:07:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:09:46.441Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

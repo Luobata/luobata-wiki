@@ -205,109 +205,115 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code>/**
+                                <pre><code class="lang-javascript"><span class="hljs-comment">/**
  * @description &#x6CE8;&#x518C;&#x5168;&#x5C40;&#x51FD;&#x6570;
  * @params * fn {Function|Array&lt;Function&gt;} &#x6CE8;&#x518C;&#x7684;&#x5168;&#x5C40;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x51FD;&#x6570;&#x6216;&#x8005;&#x51FD;&#x6570;&#x6570;&#x7EC4;
  * @params * name {string} &#x6CE8;&#x518C;&#x7684;&#x51FD;&#x6570;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x7528;&#x4E8E;update remove&#x8BC6;&#x522B;
- */
+ */</span>
 match.register(fn, name);
 
-/**
+<span class="hljs-comment">/**
  * @description &#x66F4;&#x65B0;&#x5168;&#x5C40;&#x51FD;&#x6570;
  * @params * fn {Function|Array&lt;Function&gt;} &#x6CE8;&#x518C;&#x7684;&#x5168;&#x5C40;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x51FD;&#x6570;&#x6216;&#x8005;&#x51FD;&#x6570;&#x6570;&#x7EC4;
  * @params * name {string} &#x66F4;&#x65B0;&#x7684;&#x51FD;&#x6570;&#x5173;&#x952E;&#x5B57;
- */
+ */</span>
 match.update(fn, name);
 
-/**
+<span class="hljs-comment">/**
  * @description &#x5220;&#x9664;&#x5168;&#x5C40;&#x51FD;&#x6570;
  * @params * name {string} &#x5220;&#x9664;&#x7684;&#x51FD;&#x6570;&#x5173;&#x952E;&#x5B57;
- */
+ */</span>
 match.remove(name);
-</code></pre><h2 id="etc">etc:</h2>
+</code></pre>
+<h2 id="etc">etc:</h2>
 <ol>
-<li><p>register &#x51FD;&#x6570;</p>
-<pre><code>// &#x6620;&#x5C04;&#x679A;&#x4E3E;&#x503C;
-let params = {
-    type: 1
-};
-
-const enumConf = {
-    typeOptions: [
-        {
-            id: 1,
-            name: &apos;one&apos;
-        },
-        {
-            id: 2,
-            name: &apos;two&apos;
-        }
-    ]
-};
-
-let format = function (options, id, key, value) {
-    let k = &apos;&apos;;
-
-    for (let i of options) {
-        if (i[key] === id) {
-            k = i[value];
-        }
-    }
-
-    return k;
-};
-
-match.register(format, &apos;format&apos;);
-
-let data = match.parse(params, {
-    typeId: &apos;$$&apos;,
-    typeName: function (data, format) {
-        return format(enumConf.typeOptions, this.typeId, &apos;id&apos;, &apos;name&apos;);
-    },
-    typeNameAgain: (data, format) =&gt; format(enumConf.typeOptions, data.type, &apos;id&apos;, &apos;name&apos;) // es6
-});
-
-// &#x6D4B;&#x8BD5;register&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;
-match.register([format], &apos;format&apos;);
-data = match.parse(params, {
-    pid: 1,
-    id: function (data, format) {
-        // this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params
-        return data.pid + data.id + this.pid + format.b();
-    }
-});
-</code></pre></li>
-<li><p>update &#x51FD;&#x6570;</p>
-<pre><code>// &#x6D4B;&#x8BD5;update
-let format = {
-    a: function () {
-        return 11;
-    },
-    b: function () {
-        return 22;
-    }
-};
-match.update(format, &apos;format&apos;);
-
-let data = match.parse(params, {
-    pid: 1,
-    id: function (data, format) {
-        // this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params
-        return data.pid + data.id + this.pid + format.b();
-    }
-});
-</code></pre></li>
-<li>remove &#x51FD;&#x6570;<pre><code>// &#x79FB;&#x9664;format &#x629B;&#x51FA;&#x5F02;&#x5E38;
-match.remove(&apos;format&apos;);
-var data = match.parse(params, {
-    pid: 1,
-    id: function (data, format) {
-        // this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params
-        return data.pid + data.id + this.pid + format.b();
-    }
-});
-</code></pre></li>
+<li>register &#x51FD;&#x6570;</li>
 </ol>
+<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x6620;&#x5C04;&#x679A;&#x4E3E;&#x503C;</span>
+   <span class="hljs-keyword">let</span> params = {
+       type: <span class="hljs-number">1</span>
+   };
+
+   <span class="hljs-keyword">const</span> enumConf = {
+       typeOptions: [
+           {
+               id: <span class="hljs-number">1</span>,
+               name: <span class="hljs-string">&apos;one&apos;</span>
+           },
+           {
+               id: <span class="hljs-number">2</span>,
+               name: <span class="hljs-string">&apos;two&apos;</span>
+           }
+       ]
+   };
+
+   <span class="hljs-keyword">let</span> format = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options, id, key, value</span>) </span>{
+       <span class="hljs-keyword">let</span> k = <span class="hljs-string">&apos;&apos;</span>;
+
+       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> options) {
+           <span class="hljs-keyword">if</span> (i[key] === id) {
+               k = i[value];
+           }
+       }
+
+       <span class="hljs-keyword">return</span> k;
+   };
+
+   match.register(format, <span class="hljs-string">&apos;format&apos;</span>);
+
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       typeId: <span class="hljs-string">&apos;$${{type}}&apos;</span>,
+       typeName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
+           <span class="hljs-keyword">return</span> format(enumConf.typeOptions, <span class="hljs-keyword">this</span>.typeId, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>);
+       },
+       typeNameAgain: (data, format) =&gt; format(enumConf.typeOptions, data.type, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>) <span class="hljs-comment">// es6</span>
+   });
+
+   <span class="hljs-comment">// &#x6D4B;&#x8BD5;register&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</span>
+   match.register([format], <span class="hljs-string">&apos;format&apos;</span>);
+   data = match.parse(params, {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
+           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+       }
+   });
+</code></pre>
+<ol>
+<li>update &#x51FD;&#x6570;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x6D4B;&#x8BD5;update</span>
+   <span class="hljs-keyword">let</span> format = {
+       a: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+           <span class="hljs-keyword">return</span> <span class="hljs-number">11</span>;
+       },
+       b: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+           <span class="hljs-keyword">return</span> <span class="hljs-number">22</span>;
+       }
+   };
+   match.update(format, <span class="hljs-string">&apos;format&apos;</span>);
+
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
+           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+       }
+   });
+</code></pre>
+<ol>
+<li>remove &#x51FD;&#x6570;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x79FB;&#x9664;format &#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
+   match.remove(<span class="hljs-string">&apos;format&apos;</span>);
+   <span class="hljs-keyword">var</span> data = match.parse(params, {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
+           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+       }
+   });
+</code></pre>
 
                                 
                                 </section>
@@ -351,7 +357,7 @@ var data = match.parse(params, {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"注册函数","level":"1.2.2","depth":2,"next":{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},"previous":{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-function.md","mtime":"2017-09-15T03:03:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-15T07:26:13.470Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"注册函数","level":"1.2.2","depth":2,"next":{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},"previous":{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-function.md","mtime":"2017-10-31T03:08:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:09:46.441Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

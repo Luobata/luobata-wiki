@@ -219,241 +219,253 @@ match.parse(params, matchObj);
 match.parseConfig(params, matchObj, tmpConfig);
 </code></pre><h2 id="etc">etc:</h2>
 <ol>
-<li><p>&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</p>
-<pre><code>const match = import &apos;lib-match&apos;;
-
-let params = {
-    title: &apos;title&apos;
-};
-
-// &#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;
-let data = match.parse(params, {
-    title: &apos;$$&apos;,
-    msg: &apos;this is string&apos;
-});
-</code></pre></li>
-<li><p>&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</p>
-<pre><code>let params = {
-    title: &apos;title&apos;,
-    data: {
-        city: &apos;&#x5317;&#x4EAC;&#x5E02;&apos;,
-        province: &apos;&#x5317;&#x4EAC;&apos;
-    }
-};
-
-// &#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;
-let data = match.parse(params, {
-    title: &apos;$$&apos;,
-    data: {
-        city: &apos;$$&apos;,
-    pro: &apos;$$&apos;
-}
-});
-</code></pre></li>
-<li><p>&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</p>
-<pre><code>let params = {
-    title: &apos;title&apos;,
-    id: 1
-};
-
-// &#x6620;&#x5C04;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;
-let data = match.parse(params, {
-    title: &apos;$$ || 123&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;number&#x7C7B;&#x578B; 123
-    id: &apos;$$ || &quot;123&quot;&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;string&#x7C7B;&#x578B; 123
-    name: &apos;$$ || []&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x6570;&#x7EC4;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x6570;&#x7EC4;
-    value: &apos;$$ || {}&apos;, // &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x5BF9;&#x8C61;
-});
-</code></pre></li>
-<li><p>&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</p>
-<pre><code>let params = [
-    {
-        code: 200,
-        msg: &apos;ok&apos;,
-        data: [1, 2, 3]
-    },
-    {
-        code: 500,
-        msg: &apos;error&apos;,
-        data: [4, 5, 6]
-    }
-];
-
-let data = match.parse(params, {
-    code: &apos;${0.code}&apos;,
-    msg: &apos;${1.msg}&apos;,
-    data: function (data) {
-        return data[0].data.concat(data[1].data); // [1, 2, 3, 4, 5, 6]
-    }
-});
-</code></pre></li>
-<li><p>&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;/&#x5BF9;&#x8C61;&#x6570;&#x7EC4;</p>
-<pre><code>let params = {
-    code: 200,
-    msg: &apos;success&apos;,
-    data: [
-        {
-            id: 1,
-            type: &apos;a&apos;
-        },
-        {
-            id: 2
-        }
-    ]
-};
-
-// &#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;
-let data = match.parse(params, {
-    code: &apos;$$&apos;,
-    msg: &apos;$$&apos;,
-    data: [&apos;data&apos;, {
-        id: &apos;$$&apos;,
-        title: &apos;string&apos;,
-        type: &quot;$$ || &apos;abc&apos;&quot;
-    }]
-});
-
-params = [
-    {
-        id: 1,
-        type: &apos;a&apos;
-    },
-    {
-        id: 2
-    }
-];
-
-// &#x76F4;&#x63A5;&#x6620;&#x5C04;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;
-data = match.parse(params, [{
-    id: &apos;$$&apos;,
-    title: &apos;string&apos;,
-    type: &quot;$$ || &apos;abc&apos;&quot;
-}]);
-
-params = {
-    data: [
-        {
-            id: 1,
-            type: &apos;a&apos;
-        },
-        {
-            id: 2
-        }
-    ]
-};
-// &#x6620;&#x5C04; params.data &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;
-data = match.parse(params, [&apos;data&apos;, {
-    id: &apos;$$&apos;,
-    title: &apos;string&apos;,
-    type: &quot;$$ || &apos;abc&apos;&quot;
-}]);
-</code></pre></li>
-<li><p><strong>&#x6620;&#x5C04;function</strong></p>
-<pre><code>let params = {
-    pid: 2,
-    id: 3
-};
-
-// &#x6620;&#x5C04; function
-let data = match.parse(params, {
-    pid: 1,
-    id: function (data) {
-        // this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params
-        return data.pid + data.id + this.pid; // 6
-    }
-});
-</code></pre></li>
-<li><p><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config</strong></p>
-<pre><code>params = {
-    pid: 1,
-    id: 2,
-    cityId: 2
-};
-data = match.parseConfig(params, {
-    id: &apos;$$&apos;,
-    pid: &apos;$$&apos;
-}, {
-    autoComplete: true,
-    filterUndefined: false
-});
-expect(data).to.be.eql({
-    id: undefined,
-    pid: 1,
-    cityId: 2
-});
-
-data = match.parse(params, {
-    id: &apos;$$&apos;
-});
-expect(data).to.be.eql({
-    id: 2
-});
-
-data = match.parseConfig(params, {
-    id: &apos;$$&apos;,
-    pid: &apos;$$&apos;
-}, {
-    ignoreTokenKey: [&apos;id&apos;]
-});
-
-expect(data).to.be.eql({
-    id: &apos;$$&apos;,
-    pid: 1
-});
-
-data = match.parse(params, {
-    id: &apos;$$&apos;
-});
-expect(data).to.be.eql({
-    id: 2
-});
-</code></pre></li>
-<li><p><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></p>
-<pre><code>// boolean &#x5E03;&#x5C14;&#x503C; &apos;true&apos; &#x8F6C;&#x5316;&#x4E3A;true &apos;false&apos;&#x8F6C;&#x5316;&#x4E3A;false
-// Boolean &#x5E03;&#x5C14;&#x503C; &#x5BF9;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x503C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362; !!(&#x53D8;&#x91CF;)
-// int &#x6570;&#x503C;&#x503C; parseInt(x, 10);
-// float &#x4E66;&#x7EB8;&#x503C; parseFloat(x, 10);
-// string &#x5B57;&#x7B26;&#x4E32;&#x503C; x.toString();
-let params = {
-    pid: &apos;false&apos;,
-    name: 1,
-    id: &apos;2&apos;,
-    city: 1,
-    district: &apos;1.56&apos;
-};
-let data = match.parse(params, {
-    pid: &apos;(boolean)$$&apos;, // false
-    Pid: &apos;(Boolean)$$&apos;, // true
-    name: &apos;(Boolean)$$&apos;, //true
-    id: &apos;(int)$$&apos;, // 2
-    city: &apos;(string)$$&apos;, // &apos;1&apos;
-    dis: &apos;(float)$$&apos; // 1.56
-});
-
-data = match.parse([params], {
-    pid: &apos;(boolean)${0.pid}&apos;, // false
-    Pid: &apos;(Boolean)${0.pid}&apos;, //true
-    name: &apos;(Boolean)${0.name}&apos;, //true
-    id: &apos;(int)${0.id}&apos;, // 2
-    city: &apos;(string)${0.city}&apos;, // &apos;1&apos;
-    dis: &apos;(float)${0.district}&apos; //1.56
-});
-
-params = [
-    {
-        id: 1,
-        type: 2
-    },
-    {
-        id: 2
-    }
-];
-data = match.parse(params, [{
-    id: &apos;(string)$$&apos;,
-    title: &apos;string&apos;,
-    type: &quot;$$ || &apos;abc&apos;&quot;
-}]);
-</code></pre></li>
+<li>&#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</li>
 </ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">const</span> match = <span class="hljs-keyword">import</span> <span class="hljs-string">&apos;lib-match&apos;</span>;
+
+   <span class="hljs-keyword">let</span> params = {
+       title: <span class="hljs-string">&apos;title&apos;</span>
+   };
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       title: <span class="hljs-string">&apos;$${{title}}&apos;</span>,
+       msg: <span class="hljs-string">&apos;this is string&apos;</span>
+   });
+</code></pre>
+<ol>
+<li>&#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
+       title: <span class="hljs-string">&apos;title&apos;</span>,
+       data: {
+           city: <span class="hljs-string">&apos;&#x5317;&#x4EAC;&#x5E02;&apos;</span>,
+           province: <span class="hljs-string">&apos;&#x5317;&#x4EAC;&apos;</span>
+       }
+   };
+
+   <span class="hljs-comment">// &#x6620;&#x5C04;&#x666E;&#x901A;&#x5B57;&#x6BB5;</span>
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       title: <span class="hljs-string">&apos;$${{title}}&apos;</span>,
+       data: {
+           city: <span class="hljs-string">&apos;$${{data.city}}&apos;</span>,
+       pro: <span class="hljs-string">&apos;$${{data.province}}&apos;</span>
+   }
+   });
+</code></pre>
+<ol>
+<li>&#x6620;&#x5C04;&#x5B57;&#x6BB5;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
+       title: <span class="hljs-string">&apos;title&apos;</span>,
+       id: <span class="hljs-number">1</span>
+   };
+
+   <span class="hljs-comment">// &#x6620;&#x5C04;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</span>
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       title: <span class="hljs-string">&apos;$${{title}} || 123&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;number&#x7C7B;&#x578B; 123</span>
+       id: <span class="hljs-string">&apos;$${{id}} || &quot;123&quot;&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;string&#x7C7B;&#x578B; 123</span>
+       name: <span class="hljs-string">&apos;$${{name}} || []&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x6570;&#x7EC4;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x6570;&#x7EC4;</span>
+       value: <span class="hljs-string">&apos;$${{value}} || {}&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x5BF9;&#x8C61;</span>
+   });
+</code></pre>
+<ol>
+<li>&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = [
+       {
+           code: <span class="hljs-number">200</span>,
+           msg: <span class="hljs-string">&apos;ok&apos;</span>,
+           data: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+       },
+       {
+           code: <span class="hljs-number">500</span>,
+           msg: <span class="hljs-string">&apos;error&apos;</span>,
+           data: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
+       }
+   ];
+
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       code: <span class="hljs-string">&apos;${0.code}&apos;</span>,
+       msg: <span class="hljs-string">&apos;${1.msg}&apos;</span>,
+       data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+           <span class="hljs-keyword">return</span> data[<span class="hljs-number">0</span>].data.concat(data[<span class="hljs-number">1</span>].data); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span>
+       }
+   });
+</code></pre>
+<ol>
+<li>&#x6620;&#x5C04;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;/&#x5BF9;&#x8C61;&#x6570;&#x7EC4;</li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
+       code: <span class="hljs-number">200</span>,
+       msg: <span class="hljs-string">&apos;success&apos;</span>,
+       data: [
+           {
+               id: <span class="hljs-number">1</span>,
+               type: <span class="hljs-string">&apos;a&apos;</span>
+           },
+           {
+               id: <span class="hljs-number">2</span>
+           }
+       ]
+   };
+
+   <span class="hljs-comment">// &#x6620;&#x5C04;&#x5BF9;&#x8C61;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;</span>
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       code: <span class="hljs-string">&apos;$${{code}}&apos;</span>,
+       msg: <span class="hljs-string">&apos;$${{msg}}&apos;</span>,
+       data: [<span class="hljs-string">&apos;data&apos;</span>, {
+           id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+           title: <span class="hljs-string">&apos;string&apos;</span>,
+           type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>
+       }]
+   });
+
+   params = [
+       {
+           id: <span class="hljs-number">1</span>,
+           type: <span class="hljs-string">&apos;a&apos;</span>
+       },
+       {
+           id: <span class="hljs-number">2</span>
+       }
+   ];
+
+   <span class="hljs-comment">// &#x76F4;&#x63A5;&#x6620;&#x5C04;&#x6570;&#x7EC4; &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;</span>
+   data = match.parse(params, [{
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+       title: <span class="hljs-string">&apos;string&apos;</span>,
+       type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>
+   }]);
+
+   params = {
+       data: [
+           {
+               id: <span class="hljs-number">1</span>,
+               type: <span class="hljs-string">&apos;a&apos;</span>
+           },
+           {
+               id: <span class="hljs-number">2</span>
+           }
+       ]
+   };
+   <span class="hljs-comment">// &#x6620;&#x5C04; params.data &#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;</span>
+   data = match.parse(params, [<span class="hljs-string">&apos;data&apos;</span>, {
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+       title: <span class="hljs-string">&apos;string&apos;</span>,
+       type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>
+   }]);
+</code></pre>
+<ol>
+<li><strong>&#x6620;&#x5C04;function</strong></li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-keyword">let</span> params = {
+       pid: <span class="hljs-number">2</span>,
+       id: <span class="hljs-number">3</span>
+   };
+
+   <span class="hljs-comment">// &#x6620;&#x5C04; function</span>
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid; <span class="hljs-comment">// 6</span>
+       }
+   });
+</code></pre>
+<ol>
+<li><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x4E34;&#x65F6;config</strong></li>
+</ol>
+<pre><code class="lang-javascript">   params = {
+       pid: <span class="hljs-number">1</span>,
+       id: <span class="hljs-number">2</span>,
+       cityId: <span class="hljs-number">2</span>
+   };
+   data = match.parseConfig(params, {
+       id: <span class="hljs-string">&apos;$${{ID}}&apos;</span>,
+       pid: <span class="hljs-string">&apos;$${{pid}}&apos;</span>
+   }, {
+       autoComplete: <span class="hljs-literal">true</span>,
+       filterUndefined: <span class="hljs-literal">false</span>
+   });
+   expect(data).to.be.eql({
+       id: <span class="hljs-literal">undefined</span>,
+       pid: <span class="hljs-number">1</span>,
+       cityId: <span class="hljs-number">2</span>
+   });
+
+   data = match.parse(params, {
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>
+   });
+   expect(data).to.be.eql({
+       id: <span class="hljs-number">2</span>
+   });
+
+   data = match.parseConfig(params, {
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+       pid: <span class="hljs-string">&apos;$${{pid}}&apos;</span>
+   }, {
+       ignoreTokenKey: [<span class="hljs-string">&apos;id&apos;</span>]
+   });
+
+   expect(data).to.be.eql({
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+       pid: <span class="hljs-number">1</span>
+   });
+
+   data = match.parse(params, {
+       id: <span class="hljs-string">&apos;$${{id}}&apos;</span>
+   });
+   expect(data).to.be.eql({
+       id: <span class="hljs-number">2</span>
+   });
+</code></pre>
+<ol>
+<li><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></li>
+</ol>
+<pre><code class="lang-javascript">   <span class="hljs-comment">// boolean &#x5E03;&#x5C14;&#x503C; &apos;true&apos; &#x8F6C;&#x5316;&#x4E3A;true &apos;false&apos;&#x8F6C;&#x5316;&#x4E3A;false</span>
+   <span class="hljs-comment">// Boolean &#x5E03;&#x5C14;&#x503C; &#x5BF9;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x503C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362; !!(&#x53D8;&#x91CF;)</span>
+   <span class="hljs-comment">// int &#x6570;&#x503C;&#x503C; parseInt(x, 10);</span>
+   <span class="hljs-comment">// float &#x4E66;&#x7EB8;&#x503C; parseFloat(x, 10);</span>
+   <span class="hljs-comment">// string &#x5B57;&#x7B26;&#x4E32;&#x503C; x.toString();</span>
+   <span class="hljs-keyword">let</span> params = {
+       pid: <span class="hljs-string">&apos;false&apos;</span>,
+       name: <span class="hljs-number">1</span>,
+       id: <span class="hljs-string">&apos;2&apos;</span>,
+       city: <span class="hljs-number">1</span>,
+       district: <span class="hljs-string">&apos;1.56&apos;</span>
+   };
+   <span class="hljs-keyword">let</span> data = match.parse(params, {
+       pid: <span class="hljs-string">&apos;(boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// false</span>
+       Pid: <span class="hljs-string">&apos;(Boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// true</span>
+       name: <span class="hljs-string">&apos;(Boolean)$${{name}}&apos;</span>, <span class="hljs-comment">//true</span>
+       id: <span class="hljs-string">&apos;(int)$${{id}}&apos;</span>, <span class="hljs-comment">// 2</span>
+       city: <span class="hljs-string">&apos;(string)$${{city}}&apos;</span>, <span class="hljs-comment">// &apos;1&apos;</span>
+       dis: <span class="hljs-string">&apos;(float)$${{district}}&apos;</span> <span class="hljs-comment">// 1.56</span>
+   });
+
+   data = match.parse([params], {
+       pid: <span class="hljs-string">&apos;(boolean)${0.pid}&apos;</span>, <span class="hljs-comment">// false</span>
+       Pid: <span class="hljs-string">&apos;(Boolean)${0.pid}&apos;</span>, <span class="hljs-comment">//true</span>
+       name: <span class="hljs-string">&apos;(Boolean)${0.name}&apos;</span>, <span class="hljs-comment">//true</span>
+       id: <span class="hljs-string">&apos;(int)${0.id}&apos;</span>, <span class="hljs-comment">// 2</span>
+       city: <span class="hljs-string">&apos;(string)${0.city}&apos;</span>, <span class="hljs-comment">// &apos;1&apos;</span>
+       dis: <span class="hljs-string">&apos;(float)${0.district}&apos;</span> <span class="hljs-comment">//1.56</span>
+   });
+
+   params = [
+       {
+           id: <span class="hljs-number">1</span>,
+           type: <span class="hljs-number">2</span>
+       },
+       {
+           id: <span class="hljs-number">2</span>
+       }
+   ];
+   data = match.parse(params, [{
+       id: <span class="hljs-string">&apos;(string)$${{id}}&apos;</span>,
+       title: <span class="hljs-string">&apos;string&apos;</span>,
+       type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>
+   }]);
+</code></pre>
 
                                 
                                 </section>
@@ -493,7 +505,7 @@ data = match.parse(params, [{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-parse.md","mtime":"2017-09-15T03:03:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-15T07:26:13.470Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"注册函数","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-parse.md","mtime":"2017-10-31T03:04:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:09:46.441Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
