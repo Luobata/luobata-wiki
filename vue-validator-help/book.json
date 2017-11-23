@@ -1,13 +1,23 @@
 {
+    "title": "vue-validator-help",
+    "description": "vue-validator-help api doc",
+    "language": "zh",
     "plugins": [
+        "anchors",
         "codetabs",
         "prism",
         "-highlight",
+        "splitter",
         "github"
     ],
     "pluginsConfig": {
         "github": {
             "url": "https://github.com/Luobata/vue-form-validator"
+        },
+        "fontsettings": {
+            "theme": "white",
+            "family": "sans",
+            "size":  1
         }
     }
 }
