@@ -17,7 +17,11 @@
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
                 
             
                 
@@ -176,18 +180,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="global-config">Global Config</h2>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> validate <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue-validator-help&apos;</span>;
-<span class="hljs-keyword">const</span> config = {}
-Vue.use(validate, config);
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> validate <span class="token keyword">from</span> <span class="token string">&apos;vue-validator-help&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>validate<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="length-type">length-type</h3>
 <ul>
 <li><strong>Type</strong> <code>string</code></li>
 <li><strong>Default</strong> <code>eng</code></li>
-<li><strong>Usage &amp;&amp; Value</strong><pre><code class="lang-js"><span class="hljs-keyword">const</span> config = {
-  lengthType: chi, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
-  lengthType: eng, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
-};
+<li><strong>Usage &amp;&amp; Value</strong><pre class="language-"><code class="lang-js"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+  lengthType<span class="token punctuation">:</span> chi<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+  lengthType<span class="token punctuation">:</span> eng<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 </li>
 </ul>
@@ -226,7 +230,7 @@ Vue.use(validate, config);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"config","level":"1.2.1","depth":2,"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"config","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"config.md","mtime":"2017-11-23T08:18:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T08:22:28.067Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"config","level":"1.2.1","depth":2,"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"config","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["codetabs","prism","-highlight","github"],"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"codetabs":{},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"config.md","mtime":"2017-11-23T08:18:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T08:38:53.969Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -234,6 +238,14 @@ Vue.use(validate, config);
         
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>

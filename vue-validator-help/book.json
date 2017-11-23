@@ -7,7 +7,7 @@
     ],
     "pluginsConfig": {
         "github": {
-            "url": "https://github.com/Luobata"
+            "url": "https://github.com/Luobata/vue-form-validator"
         }
     }
 }
