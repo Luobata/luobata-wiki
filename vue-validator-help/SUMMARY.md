@@ -1,5 +1,9 @@
 # Summary
 
 * [Introduction](README.md)
+* CONFIG
+    * [component-config](component.md)
+    * [global-config](config.md)
 * API
-    * [config](config.md)
+    * [trigger](trigger.md)
+    * [rule](rule.md)

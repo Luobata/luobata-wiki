@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · vue-validator-help</title>
+        <title>trigger · vue-validator-help</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -69,6 +69,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="rule.html" />
+    
     
 
     </head>
@@ -97,7 +99,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -169,7 +171,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="trigger.html">
+        <li class="chapter active" data-level="1.3.1" data-path="trigger.html">
             
                 <a href="trigger.html">
             
@@ -230,7 +232,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >trigger</a>
     </h1>
 </div>
 
@@ -245,7 +247,29 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h1>
+                                <h2 id="trigger"><a name="trigger" class="plugin-anchor" href="#trigger"><i class="fa fa-link" aria-hidden="true"></i></a>Trigger</h2>
+<ul>
+<li><strong>Type:</strong> <code>string</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+<li><p><strong>Usage:</strong></p>
+<pre class="language-"><code class="lang-js">  <span class="token comment" spellcheck="true">// trigger: validate-name.event</span>
+  <span class="token comment" spellcheck="true">// trigger: event</span>
+  <span class="token comment" spellcheck="true">// trigger: data.change</span>
+  <span class="token comment" spellcheck="true">// triggerArr: join with ;</span>
+
+  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> validate<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">&quot;input&quot;</span> trigger<span class="token operator">=</span><span class="token string">&quot;blur&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;abc&quot;</span> v<span class="token operator">-</span>validate trigger<span class="token operator">=</span><span class="token string">&quot;$input.blur&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> v<span class="token operator">-</span>validate trigger<span class="token operator">=</span><span class="token string">&quot;$$abc.change&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> v<span class="token operator">-</span>validate trigger<span class="token operator">=</span><span class="token string">&quot;$$abc.change;blur&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+</li>
+<li><p><strong>Detail:</strong></p>
+<p>  <code>event: blur | focus | input | keyup | keydown | keycode(default code = 13 enter) | keycode=\d</code></p>
+<p>  dom must be input textarea or contenteditable=true.</p>
+<p>  <code>event: change</code></p>
+<p>  <strong>dom must has attribute with v-model.</strong></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -274,6 +298,10 @@
             
                 
                 
+                <a href="rule.html" class="navigation navigation-next navigation-unique" aria-label="Next page: rule">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -281,7 +309,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"CONFIG","level":"1.2","depth":1,"ref":"","articles":[{"title":"component-config","level":"1.2.1","depth":2,"path":"component.md","ref":"component.md","articles":[]},{"title":"global-config","level":"1.2.2","depth":2,"path":"config.md","ref":"config.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"README.md","mtime":"2017-11-23T08:02:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T10:00:43.222Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"trigger","level":"1.3.1","depth":2,"next":{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]},"previous":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"trigger.md","mtime":"2017-11-23T09:59:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T10:00:43.222Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

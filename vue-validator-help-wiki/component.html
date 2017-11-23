@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · vue-validator-help</title>
+        <title>component-config · vue-validator-help</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -69,6 +69,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="config.html" />
+    
     
 
     </head>
@@ -97,7 +99,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -124,7 +126,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="component.html">
+        <li class="chapter active" data-level="1.2.1" data-path="component.html">
             
                 <a href="component.html">
             
@@ -230,7 +232,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >component-config</a>
     </h1>
 </div>
 
@@ -245,7 +247,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h1>
+                                <h2 id="component"><a name="component" class="plugin-anchor" href="#component"><i class="fa fa-link" aria-hidden="true"></i></a>Component</h2>
+<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>validate<span class="token operator">-</span>form ref<span class="token operator">=</span><span class="token string">&quot;form&quot;</span> <span class="token punctuation">:</span>rule<span class="token operator">=</span><span class="token string">&quot;rule&quot;</span> <span class="token punctuation">:</span>config<span class="token operator">=</span><span class="token string">&quot;config&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> v<span class="token operator">-</span>validate<span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> validate<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">&quot;input&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>validate<span class="token operator">-</span>form<span class="token operator">&gt;</span>
+</code></pre>
+<h2 id="v-validate"><a name="v-validate" class="plugin-anchor" href="#v-validate"><i class="fa fa-link" aria-hidden="true"></i></a>v-validate</h2>
+<ul>
+<li><strong>Type:</strong> <code>dom attribute</code></li>
+</ul>
+<p>A rule for the dom must have v-validate or validate-name.</p>
+<h2 id="validate-name"><a name="validate-name" class="plugin-anchor" href="#validate-name"><i class="fa fa-link" aria-hidden="true"></i></a>validate-name</h2>
+<ul>
+<li><strong>Type:</strong> <code>dom attribute</code></li>
+</ul>
+<p>if has rule in validate-form must have an unique validate-name.</p>
+<h3 id="config"><a name="config" class="plugin-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a>config</h3>
+<ul>
+<li><strong>Default:</strong> <code>{}</code></li>
+</ul>
+<p>same field as global-config, extend global-config to the current form.<a href="config.html">config</a></p>
+<h3 id="rule"><a name="rule" class="plugin-anchor" href="#rule"><i class="fa fa-link" aria-hidden="true"></i></a>rule</h3>
+<ul>
+<li><strong>Default:</strong> <code>{}</code></li>
+</ul>
+<p>the rule for validator, provides simply rules or complexity rules.<a href="rule.html">rule</a></p>
 
                                 
                                 </section>
@@ -274,6 +301,10 @@
             
                 
                 
+                <a href="config.html" class="navigation navigation-next navigation-unique" aria-label="Next page: global-config">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -281,7 +312,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"CONFIG","level":"1.2","depth":1,"ref":"","articles":[{"title":"component-config","level":"1.2.1","depth":2,"path":"component.md","ref":"component.md","articles":[]},{"title":"global-config","level":"1.2.2","depth":2,"path":"config.md","ref":"config.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"README.md","mtime":"2017-11-23T08:02:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T10:00:43.222Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"component-config","level":"1.2.1","depth":2,"next":{"title":"global-config","level":"1.2.2","depth":2,"path":"config.md","ref":"config.md","articles":[]},"previous":{"title":"CONFIG","level":"1.2","depth":1,"ref":"","articles":[{"title":"component-config","level":"1.2.1","depth":2,"path":"component.md","ref":"component.md","articles":[]},{"title":"global-config","level":"1.2.2","depth":2,"path":"config.md","ref":"config.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"component.md","mtime":"2017-11-23T09:36:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-23T10:00:43.222Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
