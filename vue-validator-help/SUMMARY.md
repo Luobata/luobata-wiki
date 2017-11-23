@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * CONFIG
-    * [component-config](component.md)
-    * [global-config](config.md)
+    * [global](config.md)
+    * [component](component.md)
 * API
     * [trigger](trigger.md)
     * [rule](rule.md)
