@@ -4,7 +4,7 @@
 - **Default:** `''`
 - **Usage:**
 
-    ```js
+    ```html
 // trigger: validate-name.event
 // trigger: event
 // trigger: data.change

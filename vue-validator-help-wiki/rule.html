@@ -237,6 +237,158 @@
                                 
                                 <h2 id="rule"><a name="rule" class="plugin-anchor" href="#rule"><i class="fa fa-link" aria-hidden="true"></i></a>Rule</h2>
 <p>&#x5B57;&#x6BB5;&#x6821;&#x9A8C;&#x89C4;&#x5219;</p>
+<h2 id="usage"><a name="usage" class="plugin-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<ul>
+<li><strong>Arguments:(key in Object)</strong><ul>
+<li><code>{Object} validate</code> validate&#x5305;&#x542B;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x89C4;&#x5219;&#x7684;validate-name</li>
+<li><code>{Object} data</code> data&#x5305;&#x542B;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x89C4;&#x5219;&#x7684;data(vm.$data)</li>
+</ul>
+</li>
+<li><p><strong>Usage:</strong></p>
+<pre><code class="lang-html">// dom attribute
+<span class="hljs-tag">&lt;<span class="hljs-name">validate-form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">10</span> <span class="hljs-attr">validate-name</span>=<span class="hljs-string">&quot;input&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;blur&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
+// rule-config
+<span class="hljs-tag">&lt;<span class="hljs-name">validate-form</span> <span class="hljs-attr">:rule</span>=<span class="hljs-string">&quot;rule&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">validate-name</span>=<span class="hljs-string">&quot;input&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;blur&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> rule = {
+  validate: {
+      input: {
+          min: <span class="hljs-number">10</span>,
+      }
+  }
+};
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;dom&#x7684;attribute&#x5B57;&#x6BB5;&#x4F7F;&#x7528;</p>
+</li>
+</ul>
+<h2 id="detail"><a name="detail" class="plugin-anchor" href="#detail"><i class="fa fa-link" aria-hidden="true"></i></a>Detail</h2>
+<h3 id="min-min"><a name="min-min" class="plugin-anchor" href="#min-min"><i class="fa fa-link" aria-hidden="true"></i></a>min Min</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+</ul>
+<p>value &#x7684;&#x6700;&#x5C0F;&#x503C;
+<strong>&#x5927;&#x5C0F;&#x5199;&#x8868;&#x793A;&#x8FB9;&#x754C;&#x503C; &#x6BD4;&#x5982;min=&quot;2&quot; &#x8868;&#x793A;2&#x7B26;&#x5408;&#x6761;&#x4EF6; Min=&quot;2&quot; &#x8868;&#x793A;2&#x4E0D;&#x7B26;&#x5408;&#x6761;&#x4EF6; &#x5373;&#x5927;&#x5199;&#x4E0D;&#x5305;&#x542B;&#x8FB9;&#x754C; &#x4E0B;&#x540C;</strong></p>
+<h3 id="max-max"><a name="max-max" class="plugin-anchor" href="#max-max"><i class="fa fa-link" aria-hidden="true"></i></a>max Max</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+<li><strong>Examples:</strong><pre><code class="lang-js"><span class="hljs-keyword">const</span> rule = {
+  validate: {
+      input: {
+          min: <span class="hljs-number">10</span>,
+          min: <span class="hljs-string">&apos;10&apos;</span>,
+          min: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+              <span class="hljs-comment">// this vm&#x5B9E;&#x4F8B;</span>
+              <span class="hljs-comment">// val &#x5F53;&#x524D;&#x503C;</span>
+              <span class="hljs-comment">// &#x6CE8;&#x610F;&#x9700;&#x8981;&#x4F7F;&#x7528;this&#x6307;&#x9488;&#x4E0D;&#x7528;&#x7BAD;&#x5934;&#x51FD;&#x6570;</span>
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.a &gt; <span class="hljs-number">10</span>) {
+                  <span class="hljs-keyword">return</span> <span class="hljs-number">10</span>;
+              } <span class="hljs-keyword">else</span> {
+                  <span class="hljs-keyword">return</span> <span class="hljs-number">15</span>;
+              }
+          }
+      }
+  }
+};
+</code></pre>
+</li>
+</ul>
+<p>value&#x7684;&#x6700;&#x5927;&#x503C;</p>
+<h3 id="min-length--minlengthonly-config"><a name="min-length--minlengthonly-config" class="plugin-anchor" href="#min-length--minlengthonly-config"><i class="fa fa-link" aria-hidden="true"></i></a>min-length / minlength(only-config)</h3>
+<h3 id="min-length--minlengthonly-config"><a name="min-length--minlengthonly-config" class="plugin-anchor" href="#min-length--minlengthonly-config"><i class="fa fa-link" aria-hidden="true"></i></a>Min-length / Minlength(only-config)</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+</ul>
+<p>value&#x7684;&#x6700;&#x5C0F;&#x957F;&#x5EA6;
+<strong>only-config &#x8868;&#x793A;&#x8BE5;&#x5199;&#x6CD5;&#x53EA;&#x80FD;&#x7528;&#x4E8E;rule-config&#x4E2D; &#x56E0;&#x4E3A;&#x5C5E;&#x6027;&#x548C;&#x539F;&#x751F;dom&#x7684;attribute&#x547D;&#x540D;&#x51B2;&#x7A81;</strong></p>
+<h3 id="max-length--maxlengthonly-config"><a name="max-length--maxlengthonly-config" class="plugin-anchor" href="#max-length--maxlengthonly-config"><i class="fa fa-link" aria-hidden="true"></i></a>max-length / maxlength(only-config)</h3>
+<h3 id="max-length--maxlengthonly-config"><a name="max-length--maxlengthonly-config" class="plugin-anchor" href="#max-length--maxlengthonly-config"><i class="fa fa-link" aria-hidden="true"></i></a>Max-length / Maxlength(only-config)</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+</ul>
+<p>value&#x7684;&#x6700;&#x5927;&#x957F;&#x5EA6;</p>
+<h3 id="min-float-length--minfloatlength"><a name="min-float-length--minfloatlength" class="plugin-anchor" href="#min-float-length--minfloatlength"><i class="fa fa-link" aria-hidden="true"></i></a>min-float-length / minfloatlength</h3>
+<h3 id="min-float-length--minfloatlength"><a name="min-float-length--minfloatlength" class="plugin-anchor" href="#min-float-length--minfloatlength"><i class="fa fa-link" aria-hidden="true"></i></a>Min-float-length / Minfloatlength</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+</ul>
+<p>value&#x7684;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x6700;&#x5C0F;&#x957F;&#x5EA6;</p>
+<h3 id="max-float-length--maxfloatlength"><a name="max-float-length--maxfloatlength" class="plugin-anchor" href="#max-float-length--maxfloatlength"><i class="fa fa-link" aria-hidden="true"></i></a>max-float-length / maxfloatlength</h3>
+<h3 id="max-float-length--maxfloatlength"><a name="max-float-length--maxfloatlength" class="plugin-anchor" href="#max-float-length--maxfloatlength"><i class="fa fa-link" aria-hidden="true"></i></a>Max-float-length / Maxfloatlength</h3>
+<ul>
+<li><strong>Type:</strong> <code>string | number | function</code></li>
+</ul>
+<p>value&#x7684;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x6700;&#x5927;&#x957F;&#x5EA6;</p>
+<h3 id="required"><a name="required" class="plugin-anchor" href="#required"><i class="fa fa-link" aria-hidden="true"></i></a>required</h3>
+<ul>
+<li><strong>Type:</strong> <code>any</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+<li><strong>Example:</strong><pre><code class="lang-js"><span class="hljs-keyword">const</span> rule = {
+  validate: {
+      input: {
+          required: <span class="hljs-string">&apos;&apos;</span>, <span class="hljs-comment">// &#x5FC5;&#x586B;</span>
+          required: <span class="hljs-literal">false</span>, <span class="hljs-comment">// &#x975E;&#x5FC5;&#x586B;</span>
+          min: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.a &gt; <span class="hljs-number">10</span>) {
+                  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// &#x975E;&#x5FC5;&#x586B;</span>
+              }
+              <span class="hljs-comment">// &#x5FC5;&#x586B;</span>
+          }
+      }
+  }
+};
+</code></pre>
+</li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x5FC5;&#x586B;
+<strong>&#x53EA;&#x8981;&#x4E0D;&#x8FD4;&#x56DE;false &#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x5C5E;&#x6027;&#x6709;&#x6548;</strong></p>
+<h3 id="phone"><a name="phone" class="plugin-anchor" href="#phone"><i class="fa fa-link" aria-hidden="true"></i></a>phone</h3>
+<ul>
+<li><strong>Type:</strong> <code>any</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+<li><strong>Regex:</strong> <code>/^1[34578]\d{9}$/</code></li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x7B26;&#x5408;&#x4E00;&#x4E2A;&#x624B;&#x673A;&#x53F7;&#x89C4;&#x5219;
+<strong>&#x53EA;&#x8981;&#x4E0D;&#x8FD4;&#x56DE;false &#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x5C5E;&#x6027;&#x6709;&#x6548;</strong></p>
+<h3 id="email"><a name="email" class="plugin-anchor" href="#email"><i class="fa fa-link" aria-hidden="true"></i></a>email</h3>
+<ul>
+<li><strong>Type:</strong> <code>any</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+<li><strong>Regex:</strong> <code>/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/</code></li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x7B26;&#x5408;&#x4E00;&#x4E2A;email&#x89C4;&#x5219;
+<strong>&#x53EA;&#x8981;&#x4E0D;&#x8FD4;&#x56DE;false &#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x5C5E;&#x6027;&#x6709;&#x6548;</strong></p>
+<h3 id="positive-positive"><a name="positive-positive" class="plugin-anchor" href="#positive-positive"><i class="fa fa-link" aria-hidden="true"></i></a>positive Positive</h3>
+<ul>
+<li><strong>Type:</strong> <code>any</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x6B63;&#x6570;
+<strong>&#x5927;&#x5199;&#x5305;&#x542B;0</strong>
+<strong>&#x53EA;&#x8981;&#x4E0D;&#x8FD4;&#x56DE;false &#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x5C5E;&#x6027;&#x6709;&#x6548;</strong></p>
+<h3 id="negative-negative"><a name="negative-negative" class="plugin-anchor" href="#negative-negative"><i class="fa fa-link" aria-hidden="true"></i></a>negative Negative</h3>
+<ul>
+<li><strong>Type:</strong> <code>any</code></li>
+<li><strong>Default:</strong> <code>&apos;&apos;</code></li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x8D1F;&#x6570;
+<strong>&#x5927;&#x5199;&#x5305;&#x542B;0</strong>
+<strong>&#x53EA;&#x8981;&#x4E0D;&#x8FD4;&#x56DE;false &#x5219;&#x8BA4;&#x4E3A;&#x8BE5;&#x5C5E;&#x6027;&#x6709;&#x6548;</strong></p>
+<h3 id="number-number"><a name="number-number" class="plugin-anchor" href="#number-number"><i class="fa fa-link" aria-hidden="true"></i></a>number Number</h3>
+<ul>
+<li><strong>Type:</strong> <code>string</code></li>
+<li><strong>Default:</strong> <code>int</code></li>
+<li><strong>Value:</strong><ul>
+<li><code>int</code> &#x6574;&#x6570;</li>
+<li><code>float</code> &#x6D6E;&#x70B9;&#x6570;</li>
+</ul>
+</li>
+</ul>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x5B57;
+<strong>&#x5C0F;&#x5199;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x5B57; &#x5373; &apos;123&apos; &#x6709;&#x6548; &#x5927;&#x5C0F;&#x5FC5;&#x987B;&#x662F;number&#x7C7B;&#x578B;</strong></p>
 
                                 
                                 </section>
@@ -276,7 +428,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"rule","level":"1.3.2","depth":2,"previous":{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"rule.md","mtime":"2017-11-24T08:16:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T08:22:20.919Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"rule","level":"1.3.2","depth":2,"previous":{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"rule.md","mtime":"2017-11-24T09:30:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T09:30:16.045Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
