@@ -25,19 +25,15 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
-                
-            
-                
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
         
@@ -240,11 +236,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="component"><a name="component" class="plugin-anchor" href="#component"><i class="fa fa-link" aria-hidden="true"></i></a>Component</h2>
-<pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>validate<span class="token operator">-</span>form ref<span class="token operator">=</span><span class="token string">&quot;form&quot;</span> <span class="token punctuation">:</span>rule<span class="token operator">=</span><span class="token string">&quot;rule&quot;</span> <span class="token punctuation">:</span>config<span class="token operator">=</span><span class="token string">&quot;config&quot;</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> v<span class="token operator">-</span>validate<span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span> validate<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">&quot;input&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>validate<span class="token operator">-</span>form<span class="token operator">&gt;</span>
-</code></pre>
+<pre><code class="lang-js">&lt;validate-form ref=<span class="hljs-string">&quot;form&quot;</span> :rule=<span class="hljs-string">&quot;rule&quot;</span> :config=<span class="hljs-string">&quot;config&quot;</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-validate</span>/&gt;</span></span>
+    &lt;input type=<span class="hljs-string">&quot;text&quot;</span> validate-name=<span class="hljs-string">&quot;input&quot;</span>/&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
+</span></code></pre>
 <hr>
 <h2 id="attribute"><a name="attribute" class="plugin-anchor" href="#attribute"><i class="fa fa-link" aria-hidden="true"></i></a>attribute</h2>
 <h3 id="v-validate"><a name="v-validate" class="plugin-anchor" href="#v-validate"><i class="fa fa-link" aria-hidden="true"></i></a>v-validate</h3>
@@ -273,8 +269,8 @@
 <ul>
 <li><strong>Description:</strong> validate all item in the validate-form</li>
 <li><strong>Return:</strong> <code>false | true</code></li>
-<li><strong>Usage:</strong> <pre class="language-"><code class="lang-js">  <span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">&apos;form&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  form<span class="token punctuation">.</span><span class="token function">validateAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<li><strong>Usage:</strong> <pre><code class="lang-js">  <span class="hljs-keyword">const</span> form = <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">&apos;form&apos;</span>];
+  form.validateAll();
 </code></pre>
 </li>
 </ul>
@@ -282,13 +278,13 @@
 <ul>
 <li><strong>Description:</strong> validate specific item</li>
 <li><strong>Arguments:</strong><ul>
-<li>{string} validate-name</li>
+<li><code>{string} validate-name</code></li>
 </ul>
 </li>
 <li><strong>Return:</strong> <code>false | true</code></li>
-<li><strong>Usage:</strong><pre class="language-"><code class="lang-js">  <span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">&apos;form&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// input is a validate-name(attribute in dom)</span>
-  form<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token string">&apos;input&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<li><strong>Usage:</strong><pre><code class="lang-js">  <span class="hljs-keyword">const</span> form = <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">&apos;form&apos;</span>];
+  <span class="hljs-comment">// input is a validate-name(attribute in dom)</span>
+  form.validate(<span class="hljs-string">&apos;input&apos;</span>);
 </code></pre>
 </li>
 </ul>
@@ -331,7 +327,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"component","level":"1.2.2","depth":2,"next":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]}]},"previous":{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"component.md","mtime":"2017-11-24T03:17:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T03:17:20.263Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"component","level":"1.2.2","depth":2,"next":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]}]},"previous":{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"component.md","mtime":"2017-11-24T04:02:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T04:17:43.902Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -370,10 +366,6 @@
     
         
         <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
     
 

@@ -45,7 +45,7 @@ the rule for validator, provides simply rules or complexity rules.[rule](rule.md
 ### validate(name)
 - **Description:** validate specific item
 - **Arguments:**
-    - {string} validate-name
+    - `{string} validate-name`
 - **Return:** `false | true`
 - **Usage:**
 ```js

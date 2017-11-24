@@ -8,8 +8,7 @@
     "plugins": [
         "anchors",
         "codetabs",
-        "prism",
-        "-highlight",
+        "-fontsettings",
         "splitter",
         "github"
     ],

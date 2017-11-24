@@ -25,19 +25,15 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
-                
-            
-                
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
         
@@ -240,18 +236,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="global-config"><a name="global-config" class="plugin-anchor" href="#global-config"><i class="fa fa-link" aria-hidden="true"></i></a>Global Config</h2>
-<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> validate <span class="token keyword">from</span> <span class="token string">&apos;vue-validator-help&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>validate<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> validate <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue-validator-help&apos;</span>;
+<span class="hljs-keyword">const</span> config = {}
+Vue.use(validate, config);
 </code></pre>
 <h3 id="length-type"><a name="length-type" class="plugin-anchor" href="#length-type"><i class="fa fa-link" aria-hidden="true"></i></a>length-type</h3>
 <ul>
 <li><strong>Type:</strong> <code>string</code></li>
 <li><strong>Default:</strong> <code>eng</code></li>
-<li><strong>Usage &amp;&amp; Value:</strong><pre class="language-"><code class="lang-js"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  lengthType<span class="token punctuation">:</span> chi<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
-  lengthType<span class="token punctuation">:</span> eng<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<li><strong>Usage &amp;&amp; Value:</strong><pre><code class="lang-js"><span class="hljs-keyword">const</span> config = {
+  lengthType: chi, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+  lengthType: eng, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+};
 </code></pre>
 </li>
 </ul>
@@ -294,7 +290,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"global","level":"1.2.1","depth":2,"next":{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]},"previous":{"title":"CONFIG","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","prism","-highlight","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"config.md","mtime":"2017-11-23T09:04:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T03:17:20.263Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"global","level":"1.2.1","depth":2,"next":{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]},"previous":{"title":"CONFIG","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"config.md","mtime":"2017-11-23T09:04:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-24T04:17:43.902Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -333,10 +329,6 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
     
         
         <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
     
 
