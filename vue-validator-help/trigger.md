@@ -3,17 +3,19 @@
 - **Type:** `string`
 - **Default:** `''`
 - **Usage:**
-```js
-    // trigger: validate-name.event
-    // trigger: event
-    // trigger: data.change
-    // triggerArr: join with ;
 
+    ```js
+// trigger: validate-name.event
+// trigger: event
+// trigger: data.change
+// triggerArr: join with ';'
+<validate-form>
     <input type="text" validate-name="input" trigger="blur"/>
     <input type="text" v-model="abc" v-validate trigger="$input.blur"/>
     <input type="text" v-validate trigger="$$abc.change"/>
     <input type="text" v-validate trigger="$$abc.change;blur"/>
-```
+</validate-form>
+    ```
 
 - **Detail:**
 
