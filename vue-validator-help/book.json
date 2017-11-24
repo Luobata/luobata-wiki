@@ -2,6 +2,9 @@
     "title": "vue-validator-help",
     "description": "vue-validator-help api doc",
     "language": "zh",
+    "styles": {
+        "website": "css/basic.css"
+    },
     "plugins": [
         "anchors",
         "codetabs",
