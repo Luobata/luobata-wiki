@@ -26,3 +26,6 @@
     `event: change`
 
     **dom must has attribute with v-model.**
+
+    `$$validateName` begin with $$ is a validate-name.
+    `$data` begin with $ is a data.

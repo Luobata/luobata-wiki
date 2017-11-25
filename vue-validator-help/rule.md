@@ -164,3 +164,30 @@ const rule = {
 
 该字段是一个数字
 **小写表示可以是字符串数字 即 '123' 有效 大小必须是number类型**
+
+### fun (only-config)
+
+- **Type:** `Function`
+- **Return:**
+    - `false` false 校验错误
+    - `Object` 返回一个rule对象 表示使用rule对象的规则进行校验
+- **Example:**
+    ```js
+const rule = {
+    validate: {
+        input: {
+            fun: function (val) {
+                if (this.d > 40) {
+                    // 满足条件 则必填
+                    return {
+                        required: '',
+                    };
+                }
+
+                // 不满足条件 认为字段错误
+                return false;
+            }
+        }
+    }
+};
+    ```
