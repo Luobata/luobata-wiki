@@ -15,7 +15,7 @@ Vue.use(validate);
 ```
 
 then in your component template, add the validate-form.
-```js
+```html
 <validate-form ref="form" :rule="rule" :config="config">
     <input type="text" v-validate/>
     <input type="text" validate-name="input"/>
