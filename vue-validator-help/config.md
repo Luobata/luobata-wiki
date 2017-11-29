@@ -1,5 +1,5 @@
 ## Global Config
-
+**The global-config can be extend by config on component **
 ```js
 import validate from 'vue-validator-help';
 const config = {}

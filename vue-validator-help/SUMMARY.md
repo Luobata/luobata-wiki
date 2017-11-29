@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* CONFIG
+* Config
     * [global](config.md)
     * [component](component.md)
 * API
