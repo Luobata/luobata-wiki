@@ -4,7 +4,7 @@ A vue plugin to solve the situation when form is need to validate by complex con
 **You can not validate a form item triger by other item's change with other validate plugin.**
 
 ## Installation
-```npm install --save-dev vue-validator-help```
+`npm install --save-dev vue-validator-help`
 
 ## Usage
 ```js
