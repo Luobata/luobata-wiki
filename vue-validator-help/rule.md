@@ -77,7 +77,7 @@ value的最小长度
 
 - **Type:** `string | number | function`
 
-value的最大长度
+value的最大长度 **如果value的类型为数组 则校验的是数组长度**
 
 ### min-float-length / minfloatlength
 ### Min-float-length / Minfloatlength
