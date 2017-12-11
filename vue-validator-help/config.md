@@ -7,9 +7,21 @@ Vue.use(validate, config);
 ```
 
 ### length-type
-- **Type:** `string`
+- **Type:** `string | function`
 - **Default:** `eng`
 - **Usage && Value:**
+```js
+const config = {
+    lengthType: 'chi',
+    lengthType: function (val) {
+        if (val === 1) {
+            return 1;
+        } else {
+            return 10;
+        }
+    }
+};
+```
 
 ### errorName
 - **Type:** `string`
