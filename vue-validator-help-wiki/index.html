@@ -250,7 +250,7 @@ Vue.use(validate);
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">validate-name</span>=<span class="hljs-string">&quot;input&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
 </code></pre>
-<p><strong>if you need to show error text or other style when error, you need to add a object errors in your component like</strong></p>
+<p><strong>if you need to show error text or other style when error, you need to add a object errors(it can be changed by the errorName in config) in your component like</strong></p>
 <pre><code class="lang-js"><span class="hljs-comment">// vue js</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
     data() {
@@ -263,6 +263,7 @@ Vue.use(validate);
 errors: {
     input: <span class="hljs-literal">true</span>,
     inputError: <span class="hljs-string">&apos;&apos;</span>, <span class="hljs-comment">// the error text is defined by you config more detail in component</span>
+    inputTarget: <span class="hljs-string">&apos;&apos;</span>, <span class="hljs-comment">// it will be a HTMLElementDiv</span>
 };
 </code></pre>
 
@@ -300,7 +301,7 @@ errors: {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Config","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"README.md","mtime":"2017-12-01T10:39:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-11T04:36:11.467Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Config","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"README.md","mtime":"2017-12-11T07:50:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-11T07:51:04.705Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

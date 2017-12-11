@@ -21,7 +21,7 @@ then in your component template, add the validate-form.
     <input type="text" validate-name="input"/>
 </validate-form>
 ```
-**if you need to show error text or other style when error, you need to add a object errors in your component like**
+**if you need to show error text or other style when error, you need to add a object errors(it can be changed by the errorName in config) in your component like**
 ```js
 // vue js
 export default {
@@ -35,5 +35,6 @@ export default {
 errors: {
     input: true,
     inputError: '', // the error text is defined by you config more detail in component
+    inputTarget: '', // it will be a HTMLElementDiv
 };
 ```
