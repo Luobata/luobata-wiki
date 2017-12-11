@@ -243,22 +243,41 @@
 <pre><code class="lang-html">// trigger: validate-name.event
 // trigger: event
 // trigger: data.change
+// trigger: data.prototype
 // triggerArr: join with &apos;;&apos;
 <span class="hljs-tag">&lt;<span class="hljs-name">validate-form</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- trigger when blur --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">validate-name</span>=<span class="hljs-string">&quot;input&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;blur&quot;</span>/&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- trigger when the validate-name=&quot;input&quot; blur --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;abc&quot;</span> <span class="hljs-attr">v-validate</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;$input.blur&quot;</span>/&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- trigger when the data abc change --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-validate</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;$$abc.change&quot;</span>/&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- trigger when the data arr.length change --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-validate</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;$$arr.length&quot;</span>/&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- trigger when the validate-name=&quot;input&quot; blur &amp;&amp; the data abc change --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-validate</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;$$abc.change;blur&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
 </code></pre>
+<pre><code class="lang-js">data() {
+  <span class="hljs-keyword">return</span> {
+      abc: <span class="hljs-string">&apos;1&apos;</span>,
+      arr: [],
+  };
+};
+</code></pre>
 </li>
 <li><p><strong>Detail:</strong></p>
-<p>  <code>event: blur | focus | input | keyup | keydown | keycode(default code = 13 enter) | keycode=\d</code></p>
+<p>  <code>event: blur | focus | input | keyup | keydown | keycode(default code = 13 enter) | keycode=\d</code>
+  <code>prototype: length</code></p>
 <p>  dom must be input textarea or contenteditable=true.</p>
 <p>  <code>event: change</code></p>
 <p>  <strong>dom must has attribute with v-model.</strong></p>
-<p>  <code>$$validateName</code> begin with $$ is a validate-name.
-  <code>$data</code> begin with $ is a data.</p>
+<p>  <code>$validateName</code> begin with $ is a validate-name.
+  <code>$$data</code> begin with $$ is a data.</p>
 </li>
 </ul>
 
@@ -300,7 +319,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"trigger","level":"1.3.1","depth":2,"next":{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]},"previous":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"trigger.md","mtime":"2017-11-27T02:07:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-29T08:36:03.245Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"trigger","level":"1.3.1","depth":2,"next":{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]},"previous":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"trigger","level":"1.3.1","depth":2,"path":"trigger.md","ref":"trigger.md","articles":[]},{"title":"rule","level":"1.3.2","depth":2,"path":"rule.md","ref":"rule.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"trigger.md","mtime":"2017-12-11T04:35:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-11T04:36:11.467Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

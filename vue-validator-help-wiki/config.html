@@ -245,14 +245,45 @@ Vue.use(validate, config);
 <ul>
 <li><strong>Type:</strong> <code>string</code></li>
 <li><strong>Default:</strong> <code>eng</code></li>
-<li><p><strong>Usage &amp;&amp; Value:</strong></p>
+<li><strong>Usage &amp;&amp; Value:</strong></li>
+</ul>
+<h3 id="errorname"><a name="errorname" class="plugin-anchor" href="#errorname"><i class="fa fa-link" aria-hidden="true"></i></a>errorName</h3>
+<ul>
+<li><strong>Type:</strong> <code>string</code></li>
+<li><strong>Default:</strong> <code>errors</code></li>
+<li><strong>Usage &amp;&amp; Value:</strong>
+<strong>&#x7528;&#x6765;&#x5B9A;&#x4E49;vm&#x5B9E;&#x4F8B;&#x4E0B;&#x7684;&#x5BF9;&#x8C61;&#x540D;&#xFF0C;&#x5F53;&#x6821;&#x9A8C;&#x9519;&#x8BEF;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x4E0B;&#x589E;&#x52A0;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x503C;*&#xFF0C;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x4E14;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</strong></li>
+</ul>
 <pre><code class="lang-js"><span class="hljs-keyword">const</span> config = {
-  lengthType: chi, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
-  lengthType: eng, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+    lengthType: <span class="hljs-string">&apos;chi&apos;</span>, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26;&#x7B97;2&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6; &#x5176;&#x4F59;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+    lengthType: <span class="hljs-string">&apos;eng&apos;</span>, <span class="hljs-comment">// &#x4E2D;&#x6587;&#x5B57;&#x7B26; &#x5168;&#x89D2;&#x534A;&#x89D2;&#x4E00;&#x5F8B;1&#x4E2A;&#x5B57;&#x7B26;&#x957F;&#x5EA6;</span>
+    errorName: <span class="hljs-string">&apos;errors&apos;</span>,
+};
+
+<span class="hljs-comment">// for errorName</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    data() {
+        <span class="hljs-keyword">return</span> {
+            errors: {},
+        };
+    }
 };
 </code></pre>
-</li>
-</ul>
+<h2 id="component-config"><a name="component-config" class="plugin-anchor" href="#component-config"><i class="fa fa-link" aria-hidden="true"></i></a>Component Config</h2>
+<p><strong>Component config &#x4E0E;Global config&#x5185;&#x5BB9;&#x76F8;&#x540C; &#x5728;component&#x4E0A;&#x4F5C;&#x7528;:cofnig&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x89C4;&#x5219;&#x5C5E;&#x6027;&#x3002;Component cofnig&#x53EF;&#x4EE5;&#x8986;&#x76D6;Global config&#x3002;</strong></p>
+<p><strong>&#x6743;&#x91CD; component-config&#x5BF9;&#x8C61; &gt; component config&#x5C5E;&#x6027; &gt; global-config&#x5BF9;&#x8C61;</strong></p>
+<pre><code class="lang-js"><span class="hljs-comment">// global</span>
+Vue.use(validate, {
+    lengthType: <span class="hljs-string">&apos;chi&apos;</span>,
+    errorName: <span class="hljs-string">&apos;er&apos;</span>,
+});
+
+<span class="hljs-comment">// component-config &amp;&amp; component-attribute</span>
+&lt;validate-form :config=<span class="hljs-string">&quot;config&quot;</span> length-type=<span class="hljs-string">&quot;chi&quot;</span> errorName=<span class="hljs-string">&quot;err&quot;</span>&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">validate-form</span>&gt;</span>
+
+// :config&#x5BF9;&#x8C61;&#x7684;&#x4F18;&#x5148;&#x7EA7; &gt; attrtibute &gt; global
+</span></code></pre>
 
                                 
                                 </section>
@@ -292,7 +323,7 @@ Vue.use(validate, config);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"global","level":"1.2.1","depth":2,"next":{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]},"previous":{"title":"Config","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"config.md","mtime":"2017-11-29T08:18:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-29T08:36:03.245Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"global","level":"1.2.1","depth":2,"next":{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]},"previous":{"title":"Config","level":"1.2","depth":1,"ref":"","articles":[{"title":"global","level":"1.2.1","depth":2,"path":"config.md","ref":"config.md","articles":[]},{"title":"component","level":"1.2.2","depth":2,"path":"component.md","ref":"component.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"config.md","mtime":"2017-12-11T04:28:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-11T04:36:11.467Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
