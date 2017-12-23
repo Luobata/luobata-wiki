@@ -191,3 +191,22 @@ const rule = {
     }
 };
     ```
+### regexp
+
+- **Type:** `String | RegExp`
+- **Example:**
+    ```html
+<!-- 作为字符串使用的时候不用加入头尾的/ / -->
+<input v-model="regexp" v-validate trigger="blur" regexp="\d"/> 
+    ```
+    ```js
+// 作为js使用 如果为RegExp类型 需要带上头尾/ / 
+const rule = {
+    validate: {
+        input: {
+            regexp: /\d/
+        }
+    }
+};  
+    ```
+
