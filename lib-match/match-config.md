@@ -4,19 +4,19 @@
 
 ```javascript
     // 默认config
-    let config = {
-        filterUndefined: true, // 过滤undefined
-        filterNull: true, // 过滤null
-        filterEmptyObject: false, // 过滤空对象
-        filterDefaultArray: false, // 过滤匹配数组产生的Array 不过滤自定义的返回值 []
-        filterDefaultObject: false, // 过滤匹配对象产生的Object 不过滤自定的返回值 {}
-        autoComplete: false, // 自动补全
-        ignoreTokenKey: [] // 忽略解析的key
-    };
-    filterUndefined: match完如果是undefined则忽略该字段
-    filterNull: match完如果是null则忽略该字段
-    autoComplete: 自动补全原对象与目标对象下字段名相同的值
-    ignoreTokenKey: 忽略关键字，命中关键字的key不进行匹配
+let config = {
+    filterUndefined: true, // 过滤undefined
+    filterNull: true, // 过滤null
+    filterEmptyObject: false, // 过滤空对象
+    filterDefaultArray: false, // 过滤匹配数组产生的Array 不过滤自定义的返回值 []
+    filterDefaultObject: false, // 过滤匹配对象产生的Object 不过滤自定的返回值 {}
+    autoComplete: false, // 自动补全
+    ignoreTokenKey: [] // 忽略解析的key
+};
+filterUndefined: match完如果是undefined则忽略该字段
+filterNull: match完如果是null则忽略该字段
+autoComplete: 自动补全原对象与目标对象下字段名相同的值
+ignoreTokenKey: 忽略关键字，命中关键字的key不进行匹配
 ```
 
 ###### 修改默认 config

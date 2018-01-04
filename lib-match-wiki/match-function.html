@@ -1,13 +1,13 @@
 
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="zh" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>注册函数 · GitBook</title>
+        <title>全局注册 · vue-validator-help</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.3">
         
         
         
@@ -17,6 +17,18 @@
     
             
                 
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -24,25 +36,13 @@
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
                 
             
-                
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
         
 
     
 
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        <link rel="stylesheet" href="css/basic.css">
         
     
 
@@ -71,7 +71,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+    <input type="text" placeholder="輸入並搜尋" />
 </div>
 
             
@@ -134,7 +134,7 @@
                 <a href="match-function.html">
             
                     
-                    注册函数
+                    全局注册
             
                 </a>
             
@@ -155,6 +155,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.4" data-path="match-chain.html">
+            
+                <a href="match-chain.html">
+            
+                    
+                    链式调用
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -167,7 +180,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+            本書使用 GitBook 釋出
         </a>
     </li>
 </ul>
@@ -190,7 +203,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >注册函数</a>
+        <a href="." >全局注册</a>
     </h1>
 </div>
 
@@ -225,88 +238,89 @@ match.update(fn, name);
  */</span>
 match.remove(name);
 </code></pre>
-<h2 id="etc">etc:</h2>
-<h6 id="register-&#x51FD;&#x6570;">register &#x51FD;&#x6570;</h6>
-<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x6620;&#x5C04;&#x679A;&#x4E3E;&#x503C;</span>
-   <span class="hljs-keyword">let</span> params = {
-       type: <span class="hljs-number">1</span>
-   };
+<h2 id="etc"><a name="etc" class="plugin-anchor" href="#etc"><i class="fa fa-link" aria-hidden="true"></i></a>etc:</h2>
+<h6 id="register-&#x51FD;&#x6570;"><a name="register-&#x51FD;&#x6570;" class="plugin-anchor" href="#register-&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>register &#x51FD;&#x6570;</h6>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x6620;&#x5C04;&#x679A;&#x4E3E;&#x503C;</span>
+<span class="hljs-keyword">let</span> params = {
+    type: <span class="hljs-number">1</span>,
+};
 
-   <span class="hljs-keyword">const</span> enumConf = {
-       typeOptions: [
-           {
-               id: <span class="hljs-number">1</span>,
-               name: <span class="hljs-string">&apos;one&apos;</span>
-           },
-           {
-               id: <span class="hljs-number">2</span>,
-               name: <span class="hljs-string">&apos;two&apos;</span>
-           }
-       ]
-   };
+<span class="hljs-keyword">const</span> enumConf = {
+    typeOptions: [
+        {
+            id: <span class="hljs-number">1</span>,
+            name: <span class="hljs-string">&apos;one&apos;</span>,
+        },
+        {
+            id: <span class="hljs-number">2</span>,
+            name: <span class="hljs-string">&apos;two&apos;</span>,
+        },
+    ],
+};
 
-   <span class="hljs-keyword">let</span> format = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options, id, key, value</span>) </span>{
-       <span class="hljs-keyword">let</span> k = <span class="hljs-string">&apos;&apos;</span>;
+<span class="hljs-keyword">let</span> format = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">options, id, key, value</span>) </span>{
+    <span class="hljs-keyword">let</span> k = <span class="hljs-string">&apos;&apos;</span>;
 
-       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> options) {
-           <span class="hljs-keyword">if</span> (i[key] === id) {
-               k = i[value];
-           }
-       }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> options) {
+        <span class="hljs-keyword">if</span> (i[key] === id) {
+            k = i[value];
+        }
+    }
 
-       <span class="hljs-keyword">return</span> k;
-   };
+    <span class="hljs-keyword">return</span> k;
+};
 
-   match.register(format, <span class="hljs-string">&apos;format&apos;</span>);
+match.register(format, <span class="hljs-string">&apos;format&apos;</span>);
 
-   <span class="hljs-keyword">let</span> data = match.parse(params, {
-       typeId: <span class="hljs-string">&apos;$${{type}}&apos;</span>,
-       typeName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
-           <span class="hljs-keyword">return</span> format(enumConf.typeOptions, <span class="hljs-keyword">this</span>.typeId, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>);
-       },
-       typeNameAgain: (data, format) =&gt; format(enumConf.typeOptions, data.type, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>) <span class="hljs-comment">// es6</span>
-   });
+<span class="hljs-keyword">let</span> data = match.parse(params, {
+    typeId: <span class="hljs-string">&apos;$${{type}}&apos;</span>,
+    typeName: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, format</span>) </span>{
+        <span class="hljs-keyword">return</span> format(enumConf.typeOptions, <span class="hljs-keyword">this</span>.typeId, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>);
+    },
+    typeNameAgain: (data, format) =&gt;
+        format(enumConf.typeOptions, data.type, <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>), <span class="hljs-comment">// es6</span>
+});
 
-   <span class="hljs-comment">// &#x6D4B;&#x8BD5;register&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</span>
-   match.register([format], <span class="hljs-string">&apos;format&apos;</span>);
-   data = match.parse(params, {
-       pid: <span class="hljs-number">1</span>,
-       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
-           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
-           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
-       }
-   });
+<span class="hljs-comment">// &#x6D4B;&#x8BD5;register&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</span>
+match.register([format], <span class="hljs-string">&apos;format&apos;</span>);
+data = match.parse(params, {
+    pid: <span class="hljs-number">1</span>,
+    id: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, format</span>) </span>{
+        <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+        <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+    },
+});
 </code></pre>
-<h6 id="update-&#x51FD;&#x6570;">update &#x51FD;&#x6570;</h6>
-<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x6D4B;&#x8BD5;update</span>
-   <span class="hljs-keyword">let</span> format = {
-       a: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-           <span class="hljs-keyword">return</span> <span class="hljs-number">11</span>;
-       },
-       b: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-           <span class="hljs-keyword">return</span> <span class="hljs-number">22</span>;
-       }
-   };
-   match.update(format, <span class="hljs-string">&apos;format&apos;</span>);
+<h6 id="update-&#x51FD;&#x6570;"><a name="update-&#x51FD;&#x6570;" class="plugin-anchor" href="#update-&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>update &#x51FD;&#x6570;</h6>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x6D4B;&#x8BD5;update</span>
+<span class="hljs-keyword">let</span> format = {
+    a: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">11</span>;
+    },
+    b: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">22</span>;
+    },
+};
+match.update(format, <span class="hljs-string">&apos;format&apos;</span>);
 
-   <span class="hljs-keyword">let</span> data = match.parse(params, {
-       pid: <span class="hljs-number">1</span>,
-       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
-           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
-           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
-       }
-   });
+<span class="hljs-keyword">let</span> data = match.parse(params, {
+    pid: <span class="hljs-number">1</span>,
+    id: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, format</span>) </span>{
+        <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+        <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+    },
+});
 </code></pre>
-<h6 id="remove-&#x51FD;&#x6570;">remove &#x51FD;&#x6570;</h6>
-<pre><code class="lang-javascript">   <span class="hljs-comment">// &#x79FB;&#x9664;format &#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
-   match.remove(<span class="hljs-string">&apos;format&apos;</span>);
-   <span class="hljs-keyword">var</span> data = match.parse(params, {
-       pid: <span class="hljs-number">1</span>,
-       id: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, format</span>) </span>{
-           <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
-           <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
-       }
-   });
+<h6 id="remove-&#x51FD;&#x6570;"><a name="remove-&#x51FD;&#x6570;" class="plugin-anchor" href="#remove-&#x51FD;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>remove &#x51FD;&#x6570;</h6>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x79FB;&#x9664;format &#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
+match.remove(<span class="hljs-string">&apos;format&apos;</span>);
+<span class="hljs-keyword">var</span> data = match.parse(params, {
+    pid: <span class="hljs-number">1</span>,
+    id: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, format</span>) </span>{
+        <span class="hljs-comment">// this &#x6307;&#x5411;&#x81EA;&#x8EAB; data &#x6307;&#x5411;params</span>
+        <span class="hljs-keyword">return</span> data.pid + data.id + <span class="hljs-keyword">this</span>.pid + format.b();
+    },
+});
 </code></pre>
 
                                 
@@ -351,7 +365,7 @@ match.remove(name);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"注册函数","level":"1.2.2","depth":2,"next":{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},"previous":{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"match-function.md","mtime":"2017-10-31T03:36:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-31T03:39:40.759Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"全局注册","level":"1.2.2","depth":2,"next":{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},"previous":{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-function.md","mtime":"2018-01-04T13:04:15.519Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-04T13:32:43.015Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -359,6 +373,18 @@ match.remove(name);
         
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
@@ -378,10 +404,6 @@ match.remove(name);
     
         
         <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
     
 

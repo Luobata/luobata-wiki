@@ -1,0 +1,402 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>链式调用 · vue-validator-help</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="css/basic.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="match-config.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="match-parse.html">
+            
+                <a href="match-parse.html">
+            
+                    
+                    映射语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="match-function.html">
+            
+                <a href="match-function.html">
+            
+                    
+                    全局注册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="match-config.html">
+            
+                <a href="match-config.html">
+            
+                    
+                    参数配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="match-chain.html">
+            
+                <a href="match-chain.html">
+            
+                    
+                    链式调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >链式调用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="chain-&#x94FE;&#x5F0F;&#x8C03;&#x7528;"><a name="chain-&#x94FE;&#x5F0F;&#x8C03;&#x7528;" class="plugin-anchor" href="#chain-&#x94FE;&#x5F0F;&#x8C03;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>chain &#x94FE;&#x5F0F;&#x8C03;&#x7528;</h1>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * @description parse tmpConfig &#x7528;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;match&#x5BF9;&#x8C61; &#x53EF;&#x4EE5;&#x94FE;&#x5F0F;&#x8C03;&#x7528;
+ * tmpConfig &#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x4FDD;&#x7559;&#x4E34;&#x65F6;&#x7684;config&#x8BBE;&#x7F6E;
+ */</span>
+<span class="hljs-string">``</span><span class="hljs-string">`
+
+## etc:
+`</span><span class="hljs-string">``</span>js
+<span class="hljs-keyword">let</span> params = {
+    code: <span class="hljs-string">&apos;200&apos;</span>,
+    msg: <span class="hljs-string">&apos;ok&apos;</span>,
+    http: <span class="hljs-number">200</span>,
+    data: {
+        cityId: <span class="hljs-string">&apos;1&apos;</span>,
+        provinceId: <span class="hljs-number">2</span>,
+        dis: <span class="hljs-number">2</span>,
+    },
+};
+<span class="hljs-keyword">let</span> data = match
+    .tmpConfig({
+        autoComplete: <span class="hljs-literal">true</span>,
+        ignoreTokenKey: [<span class="hljs-string">&apos;test&apos;</span>],
+    })
+    .parse(params, {
+        data: {
+            city: <span class="hljs-string">&apos;$${{data.cityId}}&apos;</span>,
+            province: <span class="hljs-string">&apos;$${{data.provinceId}}&apos;</span>,
+        },
+    });
+assert.deepEqual(data, {
+    code: <span class="hljs-string">&apos;200&apos;</span>,
+    msg: <span class="hljs-string">&apos;ok&apos;</span>,
+    http: <span class="hljs-number">200</span>,
+    data: {
+        cityId: <span class="hljs-string">&apos;1&apos;</span>,
+        provinceId: <span class="hljs-number">2</span>,
+        dis: <span class="hljs-number">2</span>,
+        city: <span class="hljs-string">&apos;1&apos;</span>,
+        province: <span class="hljs-number">2</span>,
+    },
+});
+
+params = <span class="hljs-literal">null</span>;
+data = match
+    .tmpConfig({
+        filterDefaultArray: <span class="hljs-literal">true</span>,
+    })
+    .parse(params, [
+        {
+            id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+            title: <span class="hljs-string">&apos;string&apos;</span>,
+            type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>,
+        },
+    ]);
+assert.deepEqual(data, <span class="hljs-literal">undefined</span>);
+
+params = {};
+data = match
+    .tmpConfig({
+        filterDefaultArray: <span class="hljs-literal">true</span>,
+    })
+    .parse(params, [
+        <span class="hljs-string">&apos;data&apos;</span>,
+        {
+            id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+            title: <span class="hljs-string">&apos;string&apos;</span>,
+            type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>,
+        },
+    ]);
+assert.deepEqual(data, <span class="hljs-literal">undefined</span>);
+
+params = {
+    code: <span class="hljs-number">200</span>,
+    msg: <span class="hljs-string">&apos;ok&apos;</span>,
+    data: <span class="hljs-literal">null</span>,
+};
+data = match
+    .tmpConfig({
+        filterDefaultArray: <span class="hljs-literal">true</span>,
+    })
+    .parse(params, {
+        code: <span class="hljs-string">&apos;$${{code}}&apos;</span>,
+        msg: <span class="hljs-string">&apos;$${{msg}}&apos;</span>,
+        array: <span class="hljs-string">&apos;$${{array}} || []&apos;</span>,
+        data: [
+            <span class="hljs-string">&apos;data&apos;</span>,
+            {
+                id: <span class="hljs-string">&apos;$${{id}}&apos;</span>,
+                title: <span class="hljs-string">&apos;string&apos;</span>,
+                type: <span class="hljs-string">&quot;$${{type}} || &apos;abc&apos;&quot;</span>,
+            },
+        ],
+    });
+assert.deepEqual(data, {
+    code: <span class="hljs-number">200</span>,
+    msg: <span class="hljs-string">&apos;ok&apos;</span>,
+    array: [],
+});
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="match-config.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 参数配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"链式调用","level":"1.2.4","depth":2,"previous":{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-chain.md","mtime":"2018-01-04T13:31:10.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-04T13:32:43.015Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
