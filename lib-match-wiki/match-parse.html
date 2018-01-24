@@ -641,6 +641,8 @@ expect(data).to.be.eql({
 <h6 id="&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;"><a name="&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;" class="plugin-anchor" href="#&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a><strong>&#x6620;&#x5C04;&#x5E26;&#x6709;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong></h6>
 <pre><code class="lang-javascript"><span class="hljs-comment">// boolean &#x5E03;&#x5C14;&#x503C; &apos;true&apos; &#x8F6C;&#x5316;&#x4E3A;true &apos;false&apos;&#x8F6C;&#x5316;&#x4E3A;false</span>
 <span class="hljs-comment">// Boolean &#x5E03;&#x5C14;&#x503C; &#x5BF9;&#x8F6C;&#x5316;&#x540E;&#x7684;&#x503C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362; !!(&#x53D8;&#x91CF;)</span>
+<span class="hljs-comment">// !boolean &#x5E03;&#x5C14;&#x503C; boolean&#x7684;&#x7ED3;&#x679C;&#x53D6;&#x975E;</span>
+<span class="hljs-comment">// !Boolean &#x5E03;&#x5C14;&#x503C; Boolean&#x7684;&#x7ED3;&#x679C;&#x53D6;&#x975E;</span>
 <span class="hljs-comment">// int &#x6570;&#x503C;&#x503C; parseInt(x, 10);</span>
 <span class="hljs-comment">// float &#x4E66;&#x7EB8;&#x503C; parseFloat(x, 10);</span>
 <span class="hljs-comment">// string &#x5B57;&#x7B26;&#x4E32;&#x503C; x.toString();</span>
@@ -653,8 +655,10 @@ expect(data).to.be.eql({
 };
 <span class="hljs-keyword">let</span> data = match.parse(params, {
     pid: <span class="hljs-string">&apos;(boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// false</span>
+    pid2: <span class="hljs-string">&apos;!(boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// true</span>
     Pid: <span class="hljs-string">&apos;(Boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// true</span>
-    name: <span class="hljs-string">&apos;(Boolean)$${{name}}&apos;</span>, <span class="hljs-comment">//true</span>
+    Pid2: <span class="hljs-string">&apos;!(Boolean)$${{pid}}&apos;</span>, <span class="hljs-comment">// false</span>
+    name: <span class="hljs-string">&apos;(Boolean)$${{name}}&apos;</span>, <span class="hljs-comment">// true</span>
     id: <span class="hljs-string">&apos;(int)$${{id}}&apos;</span>, <span class="hljs-comment">// 2</span>
     city: <span class="hljs-string">&apos;(string)$${{city}}&apos;</span>, <span class="hljs-comment">// &apos;1&apos;</span>
     dis: <span class="hljs-string">&apos;(float)$${{district}}&apos;</span>, <span class="hljs-comment">// 1.56</span>
@@ -662,11 +666,13 @@ expect(data).to.be.eql({
 
 data = match.parse([params], {
     pid: <span class="hljs-string">&apos;(boolean)${0.pid}&apos;</span>, <span class="hljs-comment">// false</span>
+    pid2: <span class="hljs-string">&apos;!(boolean)${0.pid}&apos;</span>, <span class="hljs-comment">// true</span>
     Pid: <span class="hljs-string">&apos;(Boolean)${0.pid}&apos;</span>, <span class="hljs-comment">//true</span>
-    name: <span class="hljs-string">&apos;(Boolean)${0.name}&apos;</span>, <span class="hljs-comment">//true</span>
+    Pid2: <span class="hljs-string">&apos;!(Boolean)${0.pid}&apos;</span>, <span class="hljs-comment">// false</span>
+    name: <span class="hljs-string">&apos;(Boolean)${0.name}&apos;</span>, <span class="hljs-comment">// true</span>
     id: <span class="hljs-string">&apos;(int)${0.id}&apos;</span>, <span class="hljs-comment">// 2</span>
     city: <span class="hljs-string">&apos;(string)${0.city}&apos;</span>, <span class="hljs-comment">// &apos;1&apos;</span>
-    dis: <span class="hljs-string">&apos;(float)${0.district}&apos;</span>, <span class="hljs-comment">//1.56</span>
+    dis: <span class="hljs-string">&apos;(float)${0.district}&apos;</span>, <span class="hljs-comment">// 1.56</span>
 });
 
 params = [
@@ -725,7 +731,7 @@ data = match.parse(params, [
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},{"title":"链式调用","level":"1.2.4","depth":2,"path":"match-chain.md","ref":"match-chain.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-parse.md","mtime":"2018-01-04T13:27:35.390Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-04T13:32:43.015Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},{"title":"链式调用","level":"1.2.4","depth":2,"path":"match-chain.md","ref":"match-chain.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-parse.md","mtime":"2018-01-24T12:57:01.524Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-24T12:57:13.574Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

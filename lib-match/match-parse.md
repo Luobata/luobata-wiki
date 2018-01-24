@@ -458,6 +458,8 @@ expect(data).to.be.eql({
 ```javascript
 // boolean 布尔值 'true' 转化为true 'false'转化为false
 // Boolean 布尔值 对转化后的值强制类型转换 !!(变量)
+// !boolean 布尔值 boolean的结果取非
+// !Boolean 布尔值 Boolean的结果取非
 // int 数值值 parseInt(x, 10);
 // float 书纸值 parseFloat(x, 10);
 // string 字符串值 x.toString();
@@ -470,8 +472,10 @@ let params = {
 };
 let data = match.parse(params, {
     pid: '(boolean)$${{pid}}', // false
+    pid2: '!(boolean)$${{pid}}', // true
     Pid: '(Boolean)$${{pid}}', // true
-    name: '(Boolean)$${{name}}', //true
+    Pid2: '!(Boolean)$${{pid}}', // false
+    name: '(Boolean)$${{name}}', // true
     id: '(int)$${{id}}', // 2
     city: '(string)$${{city}}', // '1'
     dis: '(float)$${{district}}', // 1.56
@@ -479,11 +483,13 @@ let data = match.parse(params, {
 
 data = match.parse([params], {
     pid: '(boolean)${0.pid}', // false
+    pid2: '!(boolean)${0.pid}', // true
     Pid: '(Boolean)${0.pid}', //true
-    name: '(Boolean)${0.name}', //true
+    Pid2: '!(Boolean)${0.pid}', // false
+    name: '(Boolean)${0.name}', // true
     id: '(int)${0.id}', // 2
     city: '(string)${0.city}', // '1'
-    dis: '(float)${0.district}', //1.56
+    dis: '(float)${0.district}', // 1.56
 });
 
 params = [
