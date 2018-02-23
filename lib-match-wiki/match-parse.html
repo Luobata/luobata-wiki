@@ -293,6 +293,7 @@ assert.deepEqual(data, {
 <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> params = {
     title: <span class="hljs-string">&apos;title&apos;</span>,
     id: <span class="hljs-number">1</span>,
+    type: <span class="hljs-number">0</span>,
 };
 
 <span class="hljs-comment">// &#x6620;&#x5C04;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</span>
@@ -301,6 +302,7 @@ assert.deepEqual(data, {
     id: <span class="hljs-string">&apos;$${{id}} || &quot;123&quot;&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;string&#x7C7B;&#x578B; 123</span>
     name: <span class="hljs-string">&apos;$${{name}} || []&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x6570;&#x7EC4;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x6570;&#x7EC4;</span>
     value: <span class="hljs-string">&apos;$${{value}} || {}&apos;</span>, <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x5BF9;&#x8C61;&#x7C7B;&#x578B; &#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x6682;&#x65F6;&#x53EA;&#x80FD;&#x7A7A;&#x5BF9;&#x8C61;</span>
+    type: <span class="hljs-string">&apos;$${{type}} ||| 1&apos;</span>, <span class="hljs-comment">// type&#x503C;&#x5B58;&#x5728; &#x4F46;&#x662F;&#x662F; false&#x7C7B;&#x578B;(!!(val) === false) &#x7528; |||</span>
 });
 assert.deepEqual(data, {
     title: <span class="hljs-string">&apos;title&apos;</span>,
@@ -309,23 +311,48 @@ assert.deepEqual(data, {
     value: {},
 });
 </code></pre>
-<h6 id="&#x8BED;&#x6CD5;&#x5D4C;&#x5957;"><a name="&#x8BED;&#x6CD5;&#x5D4C;&#x5957;" class="plugin-anchor" href="#&#x8BED;&#x6CD5;&#x5D4C;&#x5957;"><i class="fa fa-link" aria-hidden="true"></i></a>|| &#x8BED;&#x6CD5;&#x5D4C;&#x5957;</h6>
+<h5 id="&#x5B57;&#x6BB5;&#x5B58;&#x5728;-&#x4F46;&#x662F;&#x4E3A;-false-&#x7C7B;&#x578B;val--false"><a name="&#x5B57;&#x6BB5;&#x5B58;&#x5728;-&#x4F46;&#x662F;&#x4E3A;-false-&#x7C7B;&#x578B;val--false" class="plugin-anchor" href="#&#x5B57;&#x6BB5;&#x5B58;&#x5728;-&#x4F46;&#x662F;&#x4E3A;-false-&#x7C7B;&#x578B;val--false"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B57;&#x6BB5;&#x5B58;&#x5728; &#x4F46;&#x662F;&#x4E3A; false &#x7C7B;&#x578B;(!!(val === false)</h5>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> params = {
+    type: <span class="hljs-number">0</span>,
+};
+
+<span class="hljs-comment">// &#x6620;&#x5C04;&#x5E26;&#x6709;&#x9ED8;&#x8BA4;&#x503C;</span>
+<span class="hljs-keyword">let</span> data = match.parse(params, {
+    type: <span class="hljs-string">&apos;$${{type}} ||| 1&apos;</span>, <span class="hljs-comment">// type &#x5B58;&#x5728; &#x4F46;&#x662F;&#x662F; false&#x7C7B;&#x578B;(!!(val) === false)</span>
+    type2: <span class="hljs-string">&apos;$${{ids}} ||| 1&apos;</span>, <span class="hljs-comment">// ids &#x4E0D;&#x5B58;&#x5728; &#x6548;&#x679C;&#x7B49;&#x4E8E; ||</span>
+    type3: <span class="hljs-string">&apos;$${{ids}} || $${{type}} ||| 1&apos;</span>, <span class="hljs-comment">// ids &#x4E0D;&#x5B58;&#x5728; type&#x5B58;&#x5728; &#x7B49;&#x4E8E; $${{type}} ||| 1</span>
+    type4: <span class="hljs-string">&apos;$${{type}} || $${{ids}} ||| 1&apos;</span>, <span class="hljs-comment">// type&#x5B58;&#x5728; ids &#x4E0D;&#x5B58;&#x5728; &#x7B49;&#x4E8E; $${{type}} || $${{ids}}&#x76F4;&#x63A5;&#x8FD4;&#x56DE;0 &#x4E0D;&#x89E3;&#x6790;&#x540E;&#x9762;&#x7684;|||</span>
+});
+assert.deepEqual(data, {
+    type: <span class="hljs-number">1</span>,
+    type2: <span class="hljs-number">1</span>,
+    type3: <span class="hljs-number">1</span>,
+    type4: <span class="hljs-number">0</span>,
+});
+</code></pre>
+<h6 id="&#x6216;&#x8005;-&#x8BED;&#x6CD5;&#x5D4C;&#x5957;"><a name="&#x6216;&#x8005;-&#x8BED;&#x6CD5;&#x5D4C;&#x5957;" class="plugin-anchor" href="#&#x6216;&#x8005;-&#x8BED;&#x6CD5;&#x5D4C;&#x5957;"><i class="fa fa-link" aria-hidden="true"></i></a>||(&#x6216;&#x8005;|||) &#x8BED;&#x6CD5;&#x5D4C;&#x5957;</h6>
 <pre><code class="lang-js"><span class="hljs-keyword">let</span> params = {
     id: <span class="hljs-number">0</span>,
     c: <span class="hljs-number">1</span>,
     city: <span class="hljs-number">2</span>,
+    type: <span class="hljs-number">0</span>,
 };
 <span class="hljs-keyword">let</span> data = match.parse(params, {
     id: <span class="hljs-string">&apos;$${{ids}} || 123&apos;</span>,
     city: <span class="hljs-string">&apos;$${{c}} || $${{city}} || 1&apos;</span>,
     city2: <span class="hljs-string">&apos;$${{province}} || 4&apos;</span>,
     city3: <span class="hljs-string">&apos;$${{c2}} || $${{city}} || 1&apos;</span>,
+    city3: <span class="hljs-string">&apos;$${{c2}} || $${{city}} || 1&apos;</span>,
+    type1: <span class="hljs-string">&apos;$${{ids}} || $${{type}} ||| 1&apos;</span>, <span class="hljs-comment">// ids &#x4E0D;&#x5B58;&#x5728; type&#x5B58;&#x5728; &#x7B49;&#x4E8E; $${{type}} ||| 1</span>
+    type2: <span class="hljs-string">&apos;$${{type}} || $${{ids}} ||| 1&apos;</span>, <span class="hljs-comment">// type&#x5B58;&#x5728; ids &#x4E0D;&#x5B58;&#x5728; &#x7B49;&#x4E8E; $${{type}} || $${{ids}}&#x76F4;&#x63A5;&#x8FD4;&#x56DE;0 &#x4E0D;&#x89E3;&#x6790;&#x540E;&#x9762;&#x7684;|||</span>
 });
 <span class="hljs-keyword">let</span> assert.deepEqual(data, {
     id: <span class="hljs-number">123</span>,
     city: <span class="hljs-number">1</span>,
     city2: <span class="hljs-number">4</span>,
     city3: <span class="hljs-number">2</span>,
+    type1: <span class="hljs-number">1</span>,
+    type2: <span class="hljs-number">0</span>,
 });
 </code></pre>
 <h6 id="&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;"><a name="&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;" class="plugin-anchor" href="#&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6620;&#x5C04;&#x5165;&#x53E3;&#x4E3A;&#x6570;&#x7EC4;</h6>
@@ -731,7 +758,7 @@ data = match.parse(params, [
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},{"title":"链式调用","level":"1.2.4","depth":2,"path":"match-chain.md","ref":"match-chain.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-parse.md","mtime":"2018-01-24T12:57:01.524Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-24T12:57:13.574Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"映射语法","level":"1.2.1","depth":2,"next":{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},"previous":{"title":"API","level":"1.2","depth":1,"ref":"","articles":[{"title":"映射语法","level":"1.2.1","depth":2,"path":"match-parse.md","ref":"match-parse.md","articles":[]},{"title":"全局注册","level":"1.2.2","depth":2,"path":"match-function.md","ref":"match-function.md","articles":[]},{"title":"参数配置","level":"1.2.3","depth":2,"path":"match-config.md","ref":"match-config.md","articles":[]},{"title":"链式调用","level":"1.2.4","depth":2,"path":"match-chain.md","ref":"match-chain.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors","codetabs","-fontsettings","splitter","github"],"styles":{"website":"css/basic.css"},"pluginsConfig":{"github":{"url":"https://github.com/Luobata/vue-form-validator"},"splitter":{},"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"vue-validator-help","language":"zh","gitbook":"*","description":"vue-validator-help api doc"},"file":{"path":"match-parse.md","mtime":"2018-02-23T13:58:57.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T14:01:52.058Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
