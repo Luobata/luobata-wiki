@@ -89,6 +89,7 @@ assert.deepEqual(data, {
 let params = {
     title: 'title',
     id: 1,
+    type: 0,
 };
 
 // 映射带有默认值
@@ -97,6 +98,7 @@ let data = match.parse(params, {
     id: '$${{id}} || "123"', // 默认值为string类型 123
     name: '$${{name}} || []', // 默认值为数组类型 数组类型暂时只能空数组
     value: '$${{value}} || {}', // 默认值为对象类型 数组类型暂时只能空对象
+    type: '$${{type}} ||| 1', // type值存在 但是是 false类型(!!(val) === false) 用 |||
 });
 assert.deepEqual(data, {
     title: 'title',
@@ -106,25 +108,53 @@ assert.deepEqual(data, {
 });
 ```
 
-###### || 语法嵌套
+##### 字段存在 但是为 false 类型(!!(val === false)
+
+```javascript
+let params = {
+    type: 0,
+};
+
+// 映射带有默认值
+let data = match.parse(params, {
+    type: '$${{type}} ||| 1', // type 存在 但是是 false类型(!!(val) === false)
+    type2: '$${{ids}} ||| 1', // ids 不存在 效果等于 ||
+    type3: '$${{ids}} || $${{type}} ||| 1', // ids 不存在 type存在 等于 $${{type}} ||| 1
+    type4: '$${{type}} || $${{ids}} ||| 1', // type存在 ids 不存在 等于 $${{type}} || $${{ids}}直接返回0 不解析后面的|||
+});
+assert.deepEqual(data, {
+    type: 1,
+    type2: 1,
+    type3: 1,
+    type4: 0,
+});
+```
+
+###### ||(或者|||) 语法嵌套
 
 ```js
 let params = {
     id: 0,
     c: 1,
     city: 2,
+    type: 0,
 };
 let data = match.parse(params, {
     id: '$${{ids}} || 123',
     city: '$${{c}} || $${{city}} || 1',
     city2: '$${{province}} || 4',
     city3: '$${{c2}} || $${{city}} || 1',
+    city3: '$${{c2}} || $${{city}} || 1',
+    type1: '$${{ids}} || $${{type}} ||| 1', // ids 不存在 type存在 等于 $${{type}} ||| 1
+    type2: '$${{type}} || $${{ids}} ||| 1', // type存在 ids 不存在 等于 $${{type}} || $${{ids}}直接返回0 不解析后面的|||
 });
 let assert.deepEqual(data, {
     id: 123,
     city: 1,
     city2: 4,
     city3: 2,
+    type1: 1,
+    type2: 0,
 });
 ```
 
