@@ -94,17 +94,26 @@ let params = {
 
 // 映射带有默认值
 let data = match.parse(params, {
-    title: '$${{title}} || 123', // 默认值为number类型 123
-    id: '$${{id}} || "123"', // 默认值为string类型 123
+    title: '$${{ids}} || 123', // 默认值为number类型 123
+    id: '$${{ids}} || "123"', // 默认值为string类型 123
+    id2: '$${{ids}} || true', // 默认值为boolean类型 true
+    id3: '$${{ids}} || null', // 默认值为null类型 null
+    id4: '$${{ids}} || undefined', // 默认值为undefined类型 undefined
+    id5: '$${{ids}} || NaN', // 默认值为NaN类型 NaN
     name: '$${{name}} || []', // 默认值为数组类型 数组类型暂时只能空数组
     value: '$${{value}} || {}', // 默认值为对象类型 数组类型暂时只能空对象
     type: '$${{type}} ||| 1', // type值存在 但是是 false类型(!!(val) === false) 用 |||
 });
 assert.deepEqual(data, {
-    title: 'title',
-    id: 1,
+    title: 123,
+    id: '123',
+    id2: true,
+    id3: null,
+    id4: undefined,
+    id5: NaN,
     name: [],
     value: {},
+    type: 1,
 });
 ```
 
